@@ -1,0 +1,21 @@
+{
+  "inputs": {
+    "main.js": {
+      "bytes": 68,
+      "imports": []
+    }
+  },
+  "outputs": {
+    "dist/main.js": {
+      "imports": [],
+      "exports": [],
+      "entryPoint": "main.js",
+      "inputs": {
+        "main.js": {
+          "bytesInOutput": 52
+        }
+      },
+      "bytes": 64
+    }
+  }
+}
