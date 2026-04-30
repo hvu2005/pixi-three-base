@@ -1,4 +1,11 @@
 
+import { Scene } from "./src/engine/core/scene";
+
 (async () => {
-    console.log("Hello, Pixi-Three-Base!");
+    const game = new Scene({
+        matter: true,
+        cannon: true,
+        pixi: false,
+        three: true,
+    })
 })();

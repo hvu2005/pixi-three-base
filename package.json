@@ -6,6 +6,7 @@
   "scripts": {
     "build": "node build.js"
   },
+  "type": "module",
   "author": "hvu",
   "license": "MIT",
   "dependencies": {

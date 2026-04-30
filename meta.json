@@ -1,8 +1,20 @@
 {
   "inputs": {
+    "src/engine/core/scene.js": {
+      "bytes": 590,
+      "imports": [],
+      "format": "esm"
+    },
     "main.js": {
-      "bytes": 68,
-      "imports": []
+      "bytes": 203,
+      "imports": [
+        {
+          "path": "src/engine/core/scene.js",
+          "kind": "import-statement",
+          "original": "./src/engine/core/scene"
+        }
+      ],
+      "format": "esm"
     }
   },
   "outputs": {
@@ -11,11 +23,14 @@
       "exports": [],
       "entryPoint": "main.js",
       "inputs": {
+        "src/engine/core/scene.js": {
+          "bytesInOutput": 70
+        },
         "main.js": {
-          "bytesInOutput": 52
+          "bytesInOutput": 67
         }
       },
-      "bytes": 64
+      "bytes": 149
     }
   }
 }

@@ -3,8 +3,11 @@ import * as esbuild from "esbuild";
 import open from "open";
 import fs from "fs";
 import path from "path";
+import MODULE_CONFIG from "./module.config.json" with { type: "json" };
 
-
+/**
+ * @type {esbuild.BuildOptions}
+ */
 const ESBUILD_CONFIG = {
     entryPoints: ["main.js"],
     bundle: true,
@@ -13,13 +16,9 @@ const ESBUILD_CONFIG = {
     format: "iife",
     target: ["esnext"],
     minify: true,
-    // keepNames: true,
-    // drop: ['console', 'debugger'],
     treeShaking: true,
     legalComments: 'none',
-    define: {
-        global: "globalThis",
-    },
+    define: MODULE_CONFIG,
     splitting: false,
     plugins: [
         _bundleSizePlugin(),
@@ -49,7 +48,6 @@ const ESBUILD_CONFIG = {
 
 (async () => {
     try {
-
         if (!fs.existsSync("dist")) {
             fs.mkdirSync("dist", { recursive: true });
         }
@@ -61,6 +59,7 @@ const ESBUILD_CONFIG = {
         fs.writeFileSync('meta.json', JSON.stringify(result.metafile, null, 2));
 
         await _startServer(ctx);
+
 
     } catch (err) {
         console.error("Lỗi build:", err);
@@ -93,7 +92,7 @@ function _bundleSizePlugin() {
         setup(build) {
             build.onEnd(result => {
                 try {
-                    const stats = fs.statSync("dist/bundle.js");
+                    const stats = fs.statSync("dist/main.js");
                     const sizeKB = (stats.size / 1024).toFixed(2);
                     console.log(`📦 Bundle size: ${sizeKB} KB`);
                 } catch {
