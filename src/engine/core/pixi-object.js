@@ -10,25 +10,7 @@ export class PixiObject extends Container {
     constructor(scene) {
         super();
         this.scene = scene;
-        this.scene.addUpdate(this.update.bind(this));
         this.scene.pixi.add(this);
-
-        this.load();
-    }
-
-    /**
-     * @virtual
-     */
-    load() {
-
-    }
-
-    /**
-     * @virtual
-     * @param {number} dt 
-     */
-    update(dt) {
-
     }
 
     /**

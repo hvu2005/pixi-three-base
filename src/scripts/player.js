@@ -3,6 +3,14 @@ import { PixiObject } from "../engine/core/pixi-object";
 import { SimpleSprite } from "../engine/extends/pixi/simple-sprite";
 
 export class Player extends PixiObject {
+
+    constructor(scene) {
+        super(scene);
+
+        this.load();
+        this.scene.ticker.push(this.update.bind(this));
+    }
+
     load() {
         this.sprite = new SimpleSprite({
             texture: Texture.WHITE,
@@ -13,9 +21,6 @@ export class Player extends PixiObject {
         });
         this.add(this.sprite);
 
-        this.sprite.on("pointerdown", () => {
-            console.log("Player clicked");
-        });
     }
 
     update(dt) {
