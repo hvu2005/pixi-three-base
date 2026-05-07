@@ -3,6 +3,7 @@ import * as esbuild from "esbuild";
 import open from "open";
 import fs from "fs";
 import path from "path";
+
 import MODULE_CONFIG from "./module.config.json" with { type: "json" };
 
 /**

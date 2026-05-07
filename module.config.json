@@ -1,5 +1,5 @@
 {
-    "__PIXI__": "false",
+    "__PIXI__": "true",
     "__THREE__": "false",
     "__MATTER__": "false",
     "__CANNON__": "false"
