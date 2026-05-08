@@ -12,13 +12,7 @@ export class Player extends PixiObject {
     }
 
     load() {
-        this.sprite = new SimpleSprite({
-            texture: Texture.WHITE,
-            width: 100,
-            height: 100,
-            tint: 0xff0000,
-            eventMode: "static",
-        });
+        this.sprite = new SimpleSprite(Texture.WHITE, { width: 100, height: 100});
         this.add(this.sprite);
 
     }

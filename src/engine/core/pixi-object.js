@@ -10,7 +10,6 @@ export class PixiObject extends Container {
     constructor(scene) {
         super();
         this.scene = scene;
-        this.scene.pixi.add(this);
     }
 
     /**

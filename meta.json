@@ -18491,6 +18491,22 @@
       ],
       "format": "esm"
     },
+    "src/engine/core/pixi-object.js": {
+      "bytes": 862,
+      "imports": [
+        {
+          "path": "node_modules/pixi.js/lib/index.mjs",
+          "kind": "import-statement",
+          "original": "pixi.js"
+        },
+        {
+          "path": "src/engine/core/scene.js",
+          "kind": "import-statement",
+          "original": "./scene"
+        }
+      ],
+      "format": "esm"
+    },
     "src/engine/core/render/abstract/renderer.js": {
       "bytes": 142,
       "imports": [],
@@ -18513,8 +18529,13 @@
       "format": "esm"
     },
     "src/engine/core/scene.js": {
-      "bytes": 1507,
+      "bytes": 1803,
       "imports": [
+        {
+          "path": "src/engine/core/pixi-object.js",
+          "kind": "import-statement",
+          "original": "./pixi-object"
+        },
         {
           "path": "src/engine/core/render/pixi-renderer.js",
           "kind": "require-call",
@@ -18523,8 +18544,30 @@
       ],
       "format": "esm"
     },
+    "src/scripts/_scene/GameScene.js": {
+      "bytes": 145,
+      "imports": [
+        {
+          "path": "src/engine/core/scene.js",
+          "kind": "import-statement",
+          "original": "../../engine/core/scene"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/engine/extends/pixi/simple-sprite.js": {
+      "bytes": 349,
+      "imports": [
+        {
+          "path": "node_modules/pixi.js/lib/index.mjs",
+          "kind": "import-statement",
+          "original": "pixi.js"
+        }
+      ],
+      "format": "esm"
+    },
     "src/scripts/player.js": {
-      "bytes": 483,
+      "bytes": 648,
       "imports": [
         {
           "path": "node_modules/pixi.js/lib/index.mjs",
@@ -18532,25 +18575,51 @@
           "original": "pixi.js"
         },
         {
-          "path": "src/engine/core/scene.js",
+          "path": "src/engine/core/pixi-object.js",
           "kind": "import-statement",
-          "original": "../engine/core/scene"
+          "original": "../engine/core/pixi-object"
+        },
+        {
+          "path": "src/engine/extends/pixi/simple-sprite.js",
+          "kind": "import-statement",
+          "original": "../engine/extends/pixi/simple-sprite"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/scripts/player-controller.js": {
+      "bytes": 695,
+      "imports": [
+        {
+          "path": "src/engine/core/pixi-object.js",
+          "kind": "import-statement",
+          "original": "../engine/core/pixi-object"
+        },
+        {
+          "path": "src/scripts/player.js",
+          "kind": "import-statement",
+          "original": "./player"
         }
       ],
       "format": "esm"
     },
     "main.js": {
-      "bytes": 205,
+      "bytes": 324,
       "imports": [
         {
-          "path": "src/engine/core/scene.js",
+          "path": "src/scripts/_scene/GameScene.js",
           "kind": "import-statement",
-          "original": "./src/engine/core/scene"
+          "original": "./src/scripts/_scene/GameScene"
         },
         {
           "path": "src/scripts/player.js",
           "kind": "import-statement",
           "original": "./src/scripts/player"
+        },
+        {
+          "path": "src/scripts/player-controller.js",
+          "kind": "import-statement",
+          "original": "./src/scripts/player-controller"
         }
       ],
       "format": "esm"
@@ -19411,17 +19480,29 @@
         "src/engine/core/render/pixi-renderer.js": {
           "bytesInOutput": 483
         },
+        "src/engine/core/pixi-object.js": {
+          "bytesInOutput": 261
+        },
         "src/engine/core/scene.js": {
-          "bytesInOutput": 408
+          "bytesInOutput": 452
+        },
+        "src/scripts/_scene/GameScene.js": {
+          "bytesInOutput": 48
         },
         "src/scripts/player.js": {
-          "bytesInOutput": 148
+          "bytesInOutput": 246
+        },
+        "src/engine/extends/pixi/simple-sprite.js": {
+          "bytesInOutput": 95
+        },
+        "src/scripts/player-controller.js": {
+          "bytesInOutput": 379
         },
         "main.js": {
-          "bytesInOutput": 53
+          "bytesInOutput": 59
         }
       },
-      "bytes": 351496
+      "bytes": 352427
     }
   }
 }
