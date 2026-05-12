@@ -1,6 +1,6 @@
 
 
-export class CannonPhysics extends Physics {
+export class CannonPhysics {
     constructor() {
         super();
     }

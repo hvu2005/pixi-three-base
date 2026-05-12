@@ -8,6 +8,8 @@ class GameScene extends Scene {
     constructor() {
         super();
 
+        this.matter.debug = true;
+
         const sprite = new SimpleSprite(Texture.WHITE, {
             width: 100,
             height: 100,

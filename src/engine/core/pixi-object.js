@@ -17,7 +17,7 @@ export class PixiObject extends Container {
      * @param {...ContainerChild} child 
      */
     add(...child) {
-        super.addChild(...child);
+        return super.addChild(...child);
     }
 
     /**
@@ -25,7 +25,7 @@ export class PixiObject extends Container {
      * @param {...ContainerChild} child 
      */
     remove(...child) {
-        super.removeChild(...child);
+        return super.removeChild(...child);
     }
 
     /**
@@ -37,5 +37,8 @@ export class PixiObject extends Container {
         super.addChild(child);
         const localPos = this.toLocal(worldPos);
         child.position.copyFrom(localPos);
+
+        return child;
     }
+
 }
