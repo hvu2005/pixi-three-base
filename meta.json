@@ -18518,7 +18518,7 @@
       "format": "cjs"
     },
     "src/engine/core/physics/matter-physics.js": {
-      "bytes": 5274,
+      "bytes": 5361,
       "imports": [
         {
           "path": "node_modules/matter-js/build/matter.js",
@@ -18588,7 +18588,7 @@
       "format": "esm"
     },
     "src/scripts/player.js": {
-      "bytes": 822,
+      "bytes": 1009,
       "imports": [
         {
           "path": "node_modules/pixi.js/lib/index.mjs",
@@ -19551,7 +19551,7 @@
           "bytesInOutput": 84544
         },
         "src/engine/core/physics/matter-physics.js": {
-          "bytesInOutput": 2709
+          "bytesInOutput": 2774
         },
         "src/engine/core/pixi-object.js": {
           "bytesInOutput": 258
@@ -19566,7 +19566,7 @@
           "bytesInOutput": 194
         },
         "src/scripts/player.js": {
-          "bytesInOutput": 340
+          "bytesInOutput": 345
         },
         "src/engine/extends/matter/collider-2d.js": {
           "bytesInOutput": 559
@@ -19578,7 +19578,7 @@
           "bytesInOutput": 29
         }
       },
-      "bytes": 440612
+      "bytes": 440682
     }
   }
 }
