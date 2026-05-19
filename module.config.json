@@ -1,6 +1,6 @@
 {
     "__PIXI__": "true",
     "__THREE__": "false",
-    "__MATTER__": "true",
+    "__MATTER__": "false",
     "__CANNON__": "false"
 }

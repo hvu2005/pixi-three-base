@@ -29,13 +29,20 @@ export class Scene {
             this.systems.push(this.cannon);
         }
 
-        this._startLoop();
     }
 
     async init() {
         for (const s of this.systems) {
             await s.init();
         }
+
+        await this.startScene();
+        this._startLoop();
+
+    }
+
+    async startScene() {
+
     }
 
     update(dt) {

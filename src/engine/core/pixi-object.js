@@ -1,4 +1,4 @@
-import { Container, ContainerChild } from "pixi.js";
+import { Container } from "pixi.js";
 import { Scene } from "./scene";
 
 
@@ -6,15 +6,16 @@ export class PixiObject extends Container {
     /**
      * 
      * @param {Scene} scene 
+     * @param {import("pixi.js").ContainerOptions} options
      */
-    constructor(scene) {
-        super();
+    constructor(scene, options) {
+        super(options);
         this.scene = scene;
     }
 
     /**
      * 
-     * @param {...ContainerChild} child 
+     * @param {...import("pixi.js").DisplayObject[]} child 
      */
     add(...child) {
         return super.addChild(...child);
@@ -22,7 +23,7 @@ export class PixiObject extends Container {
 
     /**
      * 
-     * @param {...ContainerChild} child 
+     * @param {...import("pixi.js").DisplayObject[]} child 
      */
     remove(...child) {
         return super.removeChild(...child);
@@ -30,7 +31,7 @@ export class PixiObject extends Container {
 
     /**
      * 
-     * @param {ContainerChild} child 
+     * @param {import("pixi.js").DisplayObject} child 
      */
     attach(child) {
         const worldPos = child.getGlobalPosition();

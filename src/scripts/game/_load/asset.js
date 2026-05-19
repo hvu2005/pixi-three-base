@@ -7,5 +7,10 @@ export const Asset = {
 }
 
 export async function loadAsset() {
-    
+    for (const key in Asset) {
+        const asset = Asset[key];
+        if (asset instanceof Promise) {
+            Asset[key] = await asset;
+        }
+    }
 }
