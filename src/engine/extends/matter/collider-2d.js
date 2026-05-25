@@ -11,12 +11,15 @@ import { Bodies, Body } from "matter-js";
 
 export class Collider2d {
     /**
+     * @param {import("../../../engine/core/pixi-object").PixiObject} owner
      * @param {Collider2dOptions} options
      */
-    constructor(options = {}) {
+    constructor(owner, options = {}) {
+        this.owner = owner;
+        
         const defaultOptions = {
-            x: 0,
-            y: 0,
+            x: owner?.position?.x ?? 0,
+            y: owner?.position?.y ?? 0,
             width: 100,
             height: 100,
         };
@@ -50,6 +53,9 @@ export class Collider2d {
      */
     setPosition(x, y) {
         Body.setPosition(this.body, { x, y });
+        if (this.owner) {
+            this.owner.position.set(x, y);
+        }
     }
 
     /**
@@ -95,6 +101,26 @@ export class Collider2d {
         return this.body.position.x;
     }
 
+
+    /**
+     * Sync Pixi object position từ physics body
+     * Gọi sau khi physics engine update
+     */
+    syncFromPhysics() {
+        if (this.owner) {
+            this.owner.position.set(this.body.position.x, this.body.position.y);
+            this.owner.rotation = this.body.angle;
+        }
+    }
+
+    /**
+     * Sync physics body position từ Pixi object
+     * Gọi khi Pixi object position thay đổi trực tiếp
+     */
+    syncToPhysics() {
+        Body.setPosition(this.body, this.owner.position);
+        Body.setAngle(this.body, this.owner.rotation);
+    }
     get y() {
         return this.body.position.y;
     }

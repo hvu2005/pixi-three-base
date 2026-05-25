@@ -2,6 +2,7 @@ import { PixiObject } from "../../../engine/core/pixi-object";
 import { Sprite, Texture } from "pixi.js";
 import { SimpleSprite } from "../../../engine/extends/pixi/simple-sprite";
 import { Shooter } from "./shooter";
+import { Collider2d } from "../../../engine/extends/matter/collider-2d";
 
 
 
@@ -24,12 +25,31 @@ export class Player extends PixiObject {
         this.sprite = new SimpleSprite(Texture.WHITE, {
             width: 100,
             height: 100,
-            tint: 0x00ff00,
+            tint: 0xffffff,
         });
         this.add(this.sprite);
 
-        this.shooter = new Shooter(this.scene);
-        
+        this.shooter = new Shooter(scene, {
+            attackSpeed: 0.35,
+        });
+        this.add(this.shooter);
+
+        this.collider = new Collider2d(this, {
+            width: 100,
+            height: 100,
+            isStatic: true,
+            render: {
+                strokeStyle: "#00ff00",
+                lineWidth: 3,
+                fillStyle: "transparent",
+            }
+        });
+        this.scene.matter.add(this.collider);
+
+        this.scene.addUpdate(this.update.bind(this));
+    }
+
+    update(dt) {
 
     }
 
@@ -43,7 +63,8 @@ export class Player extends PixiObject {
         this.scene.pixi.stage.on("pointermove", this._onpointermoveBound);
         this.scene.pixi.stage.on("pointerup", this._onpointerupBound);
         this.scene.pixi.stage.on("pointerupoutside", this._onpointerupBound);
-        this.shooter.shoot(this.x, this.y);
+
+        this.shooter.isShooting = true;
     }
 
     _onpointermove(e) {
@@ -57,6 +78,7 @@ export class Player extends PixiObject {
             pointerPos.y + this._dragOffsetY,
         );
 
+        this.collider.syncToPhysics();
     }
 
     _onpointerup() {
@@ -66,5 +88,6 @@ export class Player extends PixiObject {
         this.scene.pixi.stage.off("pointerup", this._onpointerupBound);
         this.scene.pixi.stage.off("pointerupoutside", this._onpointerupBound);
 
+        this.shooter.isShooting = false;
     }
 }

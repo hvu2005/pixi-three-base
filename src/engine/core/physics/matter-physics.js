@@ -25,6 +25,7 @@ export class MatterPhysics {
 
     async init() {
         this._setupCollisionEvents();
+
     }
 
     get debug() {
@@ -74,7 +75,7 @@ export class MatterPhysics {
                 width: this.debugOptions.width,
                 height: this.debugOptions.height,
 
-                wireframes: true,
+                wireframes: false,
                 background: "transparent",
 
                 showAngleIndicator: true,
@@ -95,7 +96,7 @@ export class MatterPhysics {
         canvas.style.left = "0px";
         canvas.style.top = "0px";
         canvas.style.pointerEvents = "none";
-        canvas.style.zIndex = "9999";
+        canvas.style.zIndex = "999999";
         canvas.style.background = "transparent";
     }
 
@@ -173,7 +174,6 @@ export class MatterPhysics {
         while (this.accumulator >= this.fixedDt) {
             Engine.update(this.engine, this.fixedDt * 1000);
             this.accumulator -= this.fixedDt;
-            Render.run(this.debugRender);
 
         }
     }

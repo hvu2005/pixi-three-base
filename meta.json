@@ -18528,6 +18528,22 @@
       ],
       "format": "esm"
     },
+    "node_modules/matter-js/build/matter.js": {
+      "bytes": 374389,
+      "imports": [],
+      "format": "cjs"
+    },
+    "src/engine/core/physics/matter-physics.js": {
+      "bytes": 5361,
+      "imports": [
+        {
+          "path": "node_modules/matter-js/build/matter.js",
+          "kind": "import-statement",
+          "original": "matter-js"
+        }
+      ],
+      "format": "esm"
+    },
     "src/engine/core/scene.js": {
       "bytes": 1878,
       "imports": [
@@ -18540,6 +18556,11 @@
           "path": "src/engine/core/render/pixi-renderer.js",
           "kind": "require-call",
           "original": "./render/pixi-renderer"
+        },
+        {
+          "path": "src/engine/core/physics/matter-physics.js",
+          "kind": "require-call",
+          "original": "./physics/matter-physics"
         }
       ],
       "format": "esm"
@@ -18555,8 +18576,8 @@
       ],
       "format": "esm"
     },
-    "src/scripts/game/model/tile.js": {
-      "bytes": 539,
+    "src/scripts/game/model/Bullet.js": {
+      "bytes": 551,
       "imports": [
         {
           "path": "node_modules/pixi.js/lib/index.mjs",
@@ -18576,8 +18597,76 @@
       ],
       "format": "esm"
     },
+    "src/scripts/game/model/shooter.js": {
+      "bytes": 1167,
+      "imports": [
+        {
+          "path": "node_modules/pixi.js/lib/index.mjs",
+          "kind": "import-statement",
+          "original": "pixi.js"
+        },
+        {
+          "path": "src/engine/extends/pixi/simple-sprite.js",
+          "kind": "import-statement",
+          "original": "../../../engine/extends/pixi/simple-sprite"
+        },
+        {
+          "path": "src/engine/core/pixi-object.js",
+          "kind": "import-statement",
+          "original": "../../../engine/core/pixi-object"
+        },
+        {
+          "path": "src/scripts/game/model/Bullet.js",
+          "kind": "import-statement",
+          "original": "./Bullet"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/engine/extends/matter/collider-2d.js": {
+      "bytes": 2737,
+      "imports": [
+        {
+          "path": "node_modules/matter-js/build/matter.js",
+          "kind": "import-statement",
+          "original": "matter-js"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/scripts/game/model/player.js": {
+      "bytes": 2385,
+      "imports": [
+        {
+          "path": "src/engine/core/pixi-object.js",
+          "kind": "import-statement",
+          "original": "../../../engine/core/pixi-object"
+        },
+        {
+          "path": "node_modules/pixi.js/lib/index.mjs",
+          "kind": "import-statement",
+          "original": "pixi.js"
+        },
+        {
+          "path": "src/engine/extends/pixi/simple-sprite.js",
+          "kind": "import-statement",
+          "original": "../../../engine/extends/pixi/simple-sprite"
+        },
+        {
+          "path": "src/scripts/game/model/shooter.js",
+          "kind": "import-statement",
+          "original": "./shooter"
+        },
+        {
+          "path": "src/engine/extends/matter/collider-2d.js",
+          "kind": "import-statement",
+          "original": "../../../engine/extends/matter/collider-2d"
+        }
+      ],
+      "format": "esm"
+    },
     "src/scripts/_scene/game-scene.js": {
-      "bytes": 367,
+      "bytes": 420,
       "imports": [
         {
           "path": "src/engine/core/scene.js",
@@ -18585,104 +18674,20 @@
           "original": "../../engine/core/scene"
         },
         {
-          "path": "src/scripts/game/model/tile.js",
+          "path": "src/scripts/game/model/player.js",
           "kind": "import-statement",
-          "original": "../game/model/tile"
-        }
-      ],
-      "format": "esm"
-    },
-    "src/scripts/level-design/ld-tile-grid.js": {
-      "bytes": 815,
-      "imports": [
-        {
-          "path": "node_modules/pixi.js/lib/index.mjs",
-          "kind": "import-statement",
-          "original": "pixi.js"
-        },
-        {
-          "path": "src/engine/core/pixi-object.js",
-          "kind": "import-statement",
-          "original": "../../engine/core/pixi-object"
-        },
-        {
-          "path": "src/engine/extends/pixi/simple-sprite.js",
-          "kind": "import-statement",
-          "original": "../../engine/extends/pixi/simple-sprite"
-        }
-      ],
-      "format": "esm"
-    },
-    "src/scripts/level-design/ld-grid-map.js": {
-      "bytes": 2063,
-      "imports": [
-        {
-          "path": "src/engine/core/pixi-object.js",
-          "kind": "import-statement",
-          "original": "../../engine/core/pixi-object"
-        },
-        {
-          "path": "src/scripts/level-design/ld-tile-grid.js",
-          "kind": "import-statement",
-          "original": "./ld-tile-grid"
-        }
-      ],
-      "format": "esm"
-    },
-    "src/scripts/level-design/ld-tile.js": {
-      "bytes": 1779,
-      "imports": [
-        {
-          "path": "node_modules/pixi.js/lib/index.mjs",
-          "kind": "import-statement",
-          "original": "pixi.js"
-        },
-        {
-          "path": "src/engine/core/pixi-object.js",
-          "kind": "import-statement",
-          "original": "../../engine/core/pixi-object"
-        },
-        {
-          "path": "src/engine/extends/pixi/simple-sprite.js",
-          "kind": "import-statement",
-          "original": "../../engine/extends/pixi/simple-sprite"
-        }
-      ],
-      "format": "esm"
-    },
-    "src/scripts/_scene/level-design-scene.js": {
-      "bytes": 576,
-      "imports": [
-        {
-          "path": "src/engine/core/scene.js",
-          "kind": "import-statement",
-          "original": "../../engine/core/scene"
-        },
-        {
-          "path": "src/scripts/level-design/ld-grid-map.js",
-          "kind": "import-statement",
-          "original": "../level-design/ld-grid-map"
-        },
-        {
-          "path": "src/scripts/level-design/ld-tile.js",
-          "kind": "import-statement",
-          "original": "../level-design/ld-tile"
+          "original": "../game/model/player"
         }
       ],
       "format": "esm"
     },
     "main.js": {
-      "bytes": 226,
+      "bytes": 133,
       "imports": [
         {
           "path": "src/scripts/_scene/game-scene.js",
           "kind": "import-statement",
           "original": "./src/scripts/_scene/game-scene"
-        },
-        {
-          "path": "src/scripts/_scene/level-design-scene.js",
-          "kind": "import-statement",
-          "original": "./src/scripts/_scene/level-design-scene"
         }
       ],
       "format": "esm"
@@ -18698,19 +18703,19 @@
           "bytesInOutput": 2203
         },
         "node_modules/eventemitter3/index.js": {
-          "bytesInOutput": 2817
+          "bytesInOutput": 2834
         },
         "node_modules/eventemitter3/index.mjs": {
-          "bytesInOutput": 48
+          "bytesInOutput": 50
         },
         "node_modules/@pixi/colord/index.mjs": {
-          "bytesInOutput": 5891
+          "bytesInOutput": 5911
         },
         "node_modules/@pixi/colord/plugins/names.mjs": {
           "bytesInOutput": 3526
         },
         "node_modules/pixi.js/lib/color/Color.mjs": {
-          "bytesInOutput": 4628
+          "bytesInOutput": 4630
         },
         "node_modules/pixi.js/lib/culling/cullingMixin.mjs": {
           "bytesInOutput": 83
@@ -18722,10 +18727,10 @@
           "bytesInOutput": 425
         },
         "node_modules/pixi.js/lib/maths/matrix/Matrix.mjs": {
-          "bytesInOutput": 3393
+          "bytesInOutput": 3394
         },
         "node_modules/pixi.js/lib/maths/point/ObservablePoint.mjs": {
-          "bytesInOutput": 743
+          "bytesInOutput": 745
         },
         "node_modules/pixi.js/lib/utils/data/uid.mjs": {
           "bytesInOutput": 114
@@ -18734,7 +18739,7 @@
           "bytesInOutput": 795
         },
         "node_modules/pixi.js/lib/utils/logging/warn.mjs": {
-          "bytesInOutput": 236
+          "bytesInOutput": 237
         },
         "node_modules/pixi.js/lib/utils/pool/GlobalResourceRegistry.mjs": {
           "bytesInOutput": 383
@@ -18743,7 +18748,7 @@
           "bytesInOutput": 676
         },
         "node_modules/pixi.js/lib/utils/pool/PoolGroup.mjs": {
-          "bytesInOutput": 621
+          "bytesInOutput": 624
         },
         "node_modules/pixi.js/lib/scene/container/container-mixins/cacheAsTextureMixin.mjs": {
           "bytesInOutput": 477
@@ -18761,7 +18766,7 @@
           "bytesInOutput": 205
         },
         "node_modules/pixi.js/lib/rendering/mask/MaskEffectManager.mjs": {
-          "bytesInOutput": 507
+          "bytesInOutput": 509
         },
         "node_modules/pixi.js/lib/scene/container/container-mixins/effectsMixin.mjs": {
           "bytesInOutput": 1372
@@ -18770,19 +18775,19 @@
           "bytesInOutput": 775
         },
         "node_modules/pixi.js/lib/maths/shapes/Rectangle.mjs": {
-          "bytesInOutput": 3273
+          "bytesInOutput": 3265
         },
         "node_modules/pixi.js/lib/scene/container/bounds/Bounds.mjs": {
-          "bytesInOutput": 3858
+          "bytesInOutput": 3860
         },
         "node_modules/pixi.js/lib/scene/container/bounds/utils/matrixAndBoundsPool.mjs": {
-          "bytesInOutput": 66
+          "bytesInOutput": 71
         },
         "node_modules/pixi.js/lib/scene/container/container-mixins/getFastGlobalBoundsMixin.mjs": {
-          "bytesInOutput": 1118
+          "bytesInOutput": 1119
         },
         "node_modules/pixi.js/lib/scene/container/bounds/getGlobalBounds.mjs": {
-          "bytesInOutput": 810
+          "bytesInOutput": 815
         },
         "node_modules/pixi.js/lib/scene/container/utils/multiplyHexColors.mjs": {
           "bytesInOutput": 229
@@ -18791,16 +18796,16 @@
           "bytesInOutput": 86
         },
         "node_modules/pixi.js/lib/scene/container/container-mixins/getGlobalMixin.mjs": {
-          "bytesInOutput": 778
+          "bytesInOutput": 781
         },
         "node_modules/pixi.js/lib/scene/container/bounds/getLocalBounds.mjs": {
-          "bytesInOutput": 637
+          "bytesInOutput": 641
         },
         "node_modules/pixi.js/lib/scene/container/utils/checkChildrenDidChange.mjs": {
           "bytesInOutput": 334
         },
         "node_modules/pixi.js/lib/scene/container/container-mixins/measureMixin.mjs": {
-          "bytesInOutput": 673
+          "bytesInOutput": 674
         },
         "node_modules/pixi.js/lib/scene/container/container-mixins/onRenderMixin.mjs": {
           "bytesInOutput": 282
@@ -18809,7 +18814,7 @@
           "bytesInOutput": 478
         },
         "node_modules/pixi.js/lib/scene/container/container-mixins/toLocalGlobalMixin.mjs": {
-          "bytesInOutput": 397
+          "bytesInOutput": 401
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/instructions/InstructionSet.mjs": {
           "bytesInOutput": 440
@@ -18821,13 +18826,13 @@
           "bytesInOutput": 104
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/texture/TextureStyle.mjs": {
-          "bytesInOutput": 1897
+          "bytesInOutput": 1898
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/texture/sources/TextureSource.mjs": {
-          "bytesInOutput": 4322
+          "bytesInOutput": 4323
         },
         "node_modules/pixi.js/lib/maths/matrix/groupD8.mjs": {
-          "bytesInOutput": 1529
+          "bytesInOutput": 1530
         },
         "node_modules/pixi.js/lib/utils/misc/NOOP.mjs": {
           "bytesInOutput": 42
@@ -18836,22 +18841,22 @@
           "bytesInOutput": 670
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/texture/TextureMatrix.mjs": {
-          "bytesInOutput": 1352
+          "bytesInOutput": 1353
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/texture/Texture.mjs": {
-          "bytesInOutput": 2128
+          "bytesInOutput": 2131
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/texture/TexturePool.mjs": {
-          "bytesInOutput": 1311
+          "bytesInOutput": 1315
         },
         "node_modules/pixi.js/lib/scene/container/RenderGroup.mjs": {
-          "bytesInOutput": 4976
+          "bytesInOutput": 4978
         },
         "node_modules/pixi.js/lib/scene/container/utils/assignWithIgnore.mjs": {
           "bytesInOutput": 100
         },
         "node_modules/pixi.js/lib/scene/container/Container.mjs": {
-          "bytesInOutput": 9193
+          "bytesInOutput": 9212
         },
         "node_modules/pixi.js/lib/ticker/const.mjs": {
           "bytesInOutput": 175
@@ -18908,7 +18913,7 @@
           "bytesInOutput": 208
         },
         "node_modules/pixi.js/lib/events/EventBoundary.mjs": {
-          "bytesInOutput": 13665
+          "bytesInOutput": 13667
         },
         "node_modules/pixi.js/lib/events/EventSystem.mjs": {
           "bytesInOutput": 9731
@@ -18926,10 +18931,10 @@
           "bytesInOutput": 459
         },
         "node_modules/pixi.js/lib/environment/adapter.mjs": {
-          "bytesInOutput": 65
+          "bytesInOutput": 66
         },
         "node_modules/pixi.js/lib/utils/path.mjs": {
-          "bytesInOutput": 4363
+          "bytesInOutput": 4364
         },
         "node_modules/pixi.js/lib/assets/utils/convertToList.mjs": {
           "bytesInOutput": 118
@@ -18941,16 +18946,16 @@
           "bytesInOutput": 56
         },
         "node_modules/pixi.js/lib/assets/resolver/Resolver.mjs": {
-          "bytesInOutput": 5063
+          "bytesInOutput": 5064
         },
         "node_modules/pixi.js/lib/assets/utils/copySearchParams.mjs": {
           "bytesInOutput": 91
         },
         "node_modules/pixi.js/lib/spritesheet/Spritesheet.mjs": {
-          "bytesInOutput": 2590
+          "bytesInOutput": 2595
         },
         "node_modules/pixi.js/lib/spritesheet/spritesheetAsset.mjs": {
-          "bytesInOutput": 1811
+          "bytesInOutput": 1812
         },
         "node_modules/pixi.js/lib/spritesheet/init.mjs": {
           "bytesInOutput": 35
@@ -18959,13 +18964,13 @@
           "bytesInOutput": 252
         },
         "node_modules/pixi.js/lib/scene/sprite/Sprite.mjs": {
-          "bytesInOutput": 2290
+          "bytesInOutput": 2292
         },
         "node_modules/pixi.js/lib/rendering/mask/utils/addMaskBounds.mjs": {
           "bytesInOutput": 127
         },
         "node_modules/pixi.js/lib/rendering/mask/utils/addMaskLocalBounds.mjs": {
-          "bytesInOutput": 363
+          "bytesInOutput": 366
         },
         "node_modules/pixi.js/lib/rendering/mask/alpha/AlphaMask.mjs": {
           "bytesInOutput": 637
@@ -18977,40 +18982,40 @@
           "bytesInOutput": 504
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/texture/sources/CanvasSource.mjs": {
-          "bytesInOutput": 1070
+          "bytesInOutput": 1071
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/texture/sources/ImageSource.mjs": {
           "bytesInOutput": 336
         },
         "node_modules/pixi.js/lib/utils/browser/detectVideoAlphaMode.mjs": {
-          "bytesInOutput": 1711
+          "bytesInOutput": 1712
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/texture/sources/VideoSource.mjs": {
           "bytesInOutput": 5586
         },
         "node_modules/pixi.js/lib/assets/cache/Cache.mjs": {
-          "bytesInOutput": 983
+          "bytesInOutput": 984
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/texture/utils/textureFrom.mjs": {
-          "bytesInOutput": 626
+          "bytesInOutput": 627
         },
         "node_modules/pixi.js/lib/rendering/init.mjs": {
           "bytesInOutput": 88
         },
         "node_modules/pixi.js/lib/rendering/renderers/canvas/utils/canUseNewCanvasBlendModes.mjs": {
-          "bytesInOutput": 451
+          "bytesInOutput": 452
         },
         "node_modules/pixi.js/lib/rendering/renderers/canvas/utils/canvasUtils.mjs": {
-          "bytesInOutput": 5258
+          "bytesInOutput": 5263
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/texture/CanvasPool.mjs": {
-          "bytesInOutput": 742
+          "bytesInOutput": 743
         },
         "node_modules/pixi.js/lib/scene/container/bounds/getRenderableBounds.mjs": {
-          "bytesInOutput": 498
+          "bytesInOutput": 499
         },
         "node_modules/pixi.js/lib/scene/text/utils/getPo2TextureFromSource.mjs": {
-          "bytesInOutput": 375
+          "bytesInOutput": 376
         },
         "node_modules/pixi.js/lib/filters/CanvasFilterSystem.mjs": {
           "bytesInOutput": 3571
@@ -19022,7 +19027,7 @@
           "bytesInOutput": 175
         },
         "node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/getTestContext.mjs": {
-          "bytesInOutput": 125
+          "bytesInOutput": 126
         },
         "node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/getMaxFragmentPrecision.mjs": {
           "bytesInOutput": 203
@@ -19085,7 +19090,7 @@
           "bytesInOutput": 925
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/shader/Shader.mjs": {
-          "bytesInOutput": 2270
+          "bytesInOutput": 2271
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/state/State.mjs": {
           "bytesInOutput": 1648
@@ -19109,7 +19114,7 @@
           "bytesInOutput": 352
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/buffer/Buffer.mjs": {
-          "bytesInOutput": 1659
+          "bytesInOutput": 1660
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/geometry/utils/ensureIsBuffer.mjs": {
           "bytesInOutput": 290
@@ -19118,10 +19123,10 @@
           "bytesInOutput": 365
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/geometry/Geometry.mjs": {
-          "bytesInOutput": 1672
+          "bytesInOutput": 1673
         },
         "node_modules/pixi.js/lib/filters/FilterSystem.mjs": {
-          "bytesInOutput": 8408
+          "bytesInOutput": 8418
         },
         "node_modules/pixi.js/lib/filters/init.mjs": {
           "bytesInOutput": 58
@@ -19151,7 +19156,7 @@
           "bytesInOutput": 570
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/system/AbstractRenderer.mjs": {
-          "bytesInOutput": 4022
+          "bytesInOutput": 4026
         },
         "node_modules/pixi.js/lib/utils/const.mjs": {
           "bytesInOutput": 36
@@ -19166,7 +19171,7 @@
           "bytesInOutput": 323
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/state/const.mjs": {
-          "bytesInOutput": 339
+          "bytesInOutput": 342
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/state/getAdjustedBlendModeBlend.mjs": {
           "bytesInOutput": 92
@@ -19187,7 +19192,7 @@
           "bytesInOutput": 577
         },
         "node_modules/pixi.js/lib/rendering/high-shader/compiler/utils/addBits.mjs": {
-          "bytesInOutput": 291
+          "bytesInOutput": 292
         },
         "node_modules/pixi.js/lib/rendering/high-shader/compiler/utils/compileHooks.mjs": {
           "bytesInOutput": 157
@@ -19229,7 +19234,7 @@
           "bytesInOutput": 255
         },
         "node_modules/pixi.js/lib/rendering/batcher/shared/DefaultBatcher.mjs": {
-          "bytesInOutput": 1211
+          "bytesInOutput": 1208
         },
         "node_modules/pixi.js/lib/utils/data/GCManagedHash.mjs": {
           "bytesInOutput": 726
@@ -19244,7 +19249,7 @@
           "bytesInOutput": 2669
         },
         "node_modules/pixi.js/lib/filters/mask/MaskFilter.mjs": {
-          "bytesInOutput": 1261
+          "bytesInOutput": 1262
         },
         "node_modules/pixi.js/lib/scene/graphics/gpu/colorToUniform.mjs": {
           "bytesInOutput": 149
@@ -19256,7 +19261,7 @@
           "bytesInOutput": 477
         },
         "node_modules/pixi.js/lib/utils/browser/isSafari.mjs": {
-          "bytesInOutput": 121
+          "bytesInOutput": 122
         },
         "node_modules/pixi.js/lib/rendering/batcher/gl/GlBatchAdaptor.mjs": {
           "bytesInOutput": 675
@@ -19268,13 +19273,13 @@
           "bytesInOutput": 328
         },
         "node_modules/pixi.js/lib/rendering/mask/alpha/AlphaMaskPipe.mjs": {
-          "bytesInOutput": 2566
+          "bytesInOutput": 2571
         },
         "node_modules/pixi.js/lib/rendering/mask/color/ColorMaskPipe.mjs": {
           "bytesInOutput": 939
         },
         "node_modules/pixi.js/lib/rendering/mask/stencil/StencilMaskPipe.mjs": {
-          "bytesInOutput": 2234
+          "bytesInOutput": 2241
         },
         "node_modules/pixi.js/lib/scene/container/CustomRenderPipe.mjs": {
           "bytesInOutput": 372
@@ -19283,13 +19288,13 @@
           "bytesInOutput": 164
         },
         "node_modules/pixi.js/lib/scene/container/RenderGroupPipe.mjs": {
-          "bytesInOutput": 1774
+          "bytesInOutput": 1777
         },
         "node_modules/pixi.js/lib/scene/sprite/SpritePipe.mjs": {
           "bytesInOutput": 925
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/blendModes/BlendModePipe.mjs": {
-          "bytesInOutput": 1961
+          "bytesInOutput": 1962
         },
         "node_modules/pixi.js/lib/scene/container/utils/clearList.mjs": {
           "bytesInOutput": 98
@@ -19301,19 +19306,19 @@
           "bytesInOutput": 244
         },
         "node_modules/pixi.js/lib/scene/container/RenderGroupSystem.mjs": {
-          "bytesInOutput": 2741
+          "bytesInOutput": 2745
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/background/BackgroundSystem.mjs": {
-          "bytesInOutput": 1027
+          "bytesInOutput": 1030
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/extract/ExtractSystem.mjs": {
-          "bytesInOutput": 2213
+          "bytesInOutput": 2215
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/texture/RenderTexture.mjs": {
-          "bytesInOutput": 210
+          "bytesInOutput": 211
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/extract/GenerateTextureSystem.mjs": {
-          "bytesInOutput": 972
+          "bytesInOutput": 975
         },
         "node_modules/pixi.js/lib/utils/data/clean.mjs": {
           "bytesInOutput": 281
@@ -19322,13 +19327,13 @@
           "bytesInOutput": 3745
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/renderTarget/GlobalUniformSystem.mjs": {
-          "bytesInOutput": 2690
+          "bytesInOutput": 2691
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/SchedulerSystem.mjs": {
           "bytesInOutput": 749
         },
         "node_modules/pixi.js/lib/utils/sayHello.mjs": {
-          "bytesInOutput": 599
+          "bytesInOutput": 600
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/startup/HelloSystem.mjs": {
           "bytesInOutput": 328
@@ -19340,13 +19345,13 @@
           "bytesInOutput": 1466
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/renderTarget/RenderTarget.mjs": {
-          "bytesInOutput": 2173
+          "bytesInOutput": 2174
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/texture/utils/getCanvasTexture.mjs": {
-          "bytesInOutput": 252
+          "bytesInOutput": 253
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/view/ViewSystem.mjs": {
-          "bytesInOutput": 1214
+          "bytesInOutput": 1216
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/system/SharedSystems.mjs": {
           "bytesInOutput": 192
@@ -19358,7 +19363,7 @@
           "bytesInOutput": 176
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/renderTarget/RenderTargetSystem.mjs": {
-          "bytesInOutput": 3940
+          "bytesInOutput": 3931
         },
         "node_modules/pixi.js/lib/rendering/renderers/gl/buffer/const.mjs": {
           "bytesInOutput": 189
@@ -19370,10 +19375,10 @@
           "bytesInOutput": 2744
         },
         "node_modules/pixi.js/lib/rendering/renderers/gl/context/GlContextSystem.mjs": {
-          "bytesInOutput": 5050
+          "bytesInOutput": 5052
         },
         "node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/ensureAttributes.mjs": {
-          "bytesInOutput": 626
+          "bytesInOutput": 627
         },
         "node_modules/pixi.js/lib/rendering/renderers/gl/texture/const.mjs": {
           "bytesInOutput": 1796
@@ -19385,7 +19390,7 @@
           "bytesInOutput": 4110
         },
         "node_modules/pixi.js/lib/rendering/renderers/gl/GlBackBufferSystem.mjs": {
-          "bytesInOutput": 2296
+          "bytesInOutput": 2298
         },
         "node_modules/pixi.js/lib/rendering/renderers/gl/GlColorMaskSystem.mjs": {
           "bytesInOutput": 266
@@ -19400,10 +19405,10 @@
           "bytesInOutput": 171
         },
         "node_modules/pixi.js/lib/rendering/renderers/gpu/state/GpuStencilModesToPixi.mjs": {
-          "bytesInOutput": 653
+          "bytesInOutput": 659
         },
         "node_modules/pixi.js/lib/rendering/renderers/gl/GlStencilSystem.mjs": {
-          "bytesInOutput": 1675
+          "bytesInOutput": 1679
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/shader/UboSystem.mjs": {
           "bytesInOutput": 1329
@@ -19430,13 +19435,13 @@
           "bytesInOutput": 170
         },
         "node_modules/pixi.js/lib/rendering/renderers/gl/renderTarget/GlRenderTargetAdaptor.mjs": {
-          "bytesInOutput": 7490
+          "bytesInOutput": 7493
         },
         "node_modules/pixi.js/lib/rendering/renderers/gl/renderTarget/GlRenderTargetSystem.mjs": {
           "bytesInOutput": 181
         },
         "node_modules/pixi.js/lib/rendering/renderers/shared/buffer/BufferResource.mjs": {
-          "bytesInOutput": 534
+          "bytesInOutput": 535
         },
         "node_modules/pixi.js/lib/rendering/renderers/gl/shader/GenerateShaderSyncCode.mjs": {
           "bytesInOutput": 1482
@@ -19466,7 +19471,7 @@
           "bytesInOutput": 849
         },
         "node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/generateProgram.mjs": {
-          "bytesInOutput": 872
+          "bytesInOutput": 873
         },
         "node_modules/pixi.js/lib/rendering/renderers/gl/shader/GlShaderSystem.mjs": {
           "bytesInOutput": 2004
@@ -19481,7 +19486,7 @@
           "bytesInOutput": 1096
         },
         "node_modules/pixi.js/lib/rendering/renderers/gl/state/mapWebGLBlendModesToPixi.mjs": {
-          "bytesInOutput": 808
+          "bytesInOutput": 809
         },
         "node_modules/pixi.js/lib/rendering/renderers/gl/state/GlStateSystem.mjs": {
           "bytesInOutput": 2824
@@ -19514,7 +19519,7 @@
           "bytesInOutput": 836
         },
         "node_modules/pixi.js/lib/rendering/renderers/gl/texture/utils/mapFormatToGlInternalFormat.mjs": {
-          "bytesInOutput": 4196
+          "bytesInOutput": 4197
         },
         "node_modules/pixi.js/lib/rendering/renderers/gl/texture/utils/mapFormatToGlType.mjs": {
           "bytesInOutput": 1097
@@ -19523,19 +19528,19 @@
           "bytesInOutput": 211
         },
         "node_modules/pixi.js/lib/rendering/renderers/gl/texture/GlTextureSystem.mjs": {
-          "bytesInOutput": 7680
+          "bytesInOutput": 7682
         },
         "node_modules/pixi.js/lib/scene/graphics/gl/GlGraphicsAdaptor.mjs": {
-          "bytesInOutput": 981
+          "bytesInOutput": 982
         },
         "node_modules/pixi.js/lib/scene/mesh/gl/GlMeshAdaptor.mjs": {
-          "bytesInOutput": 796
+          "bytesInOutput": 799
         },
         "node_modules/pixi.js/lib/rendering/renderers/gl/WebGLRenderer.mjs": {
           "bytesInOutput": 509
         },
         "node_modules/pixi.js/lib/index.mjs": {
-          "bytesInOutput": 82
+          "bytesInOutput": 83
         },
         "src/engine/core/render/abstract/renderer.js": {
           "bytesInOutput": 69
@@ -19543,38 +19548,41 @@
         "src/engine/core/render/pixi-renderer.js": {
           "bytesInOutput": 545
         },
+        "node_modules/matter-js/build/matter.js": {
+          "bytesInOutput": 84544
+        },
+        "src/engine/core/physics/matter-physics.js": {
+          "bytesInOutput": 2774
+        },
         "src/engine/core/pixi-object.js": {
           "bytesInOutput": 261
         },
         "src/engine/core/scene.js": {
-          "bytesInOutput": 497
+          "bytesInOutput": 582
         },
-        "src/scripts/game/model/tile.js": {
-          "bytesInOutput": 191
+        "src/scripts/game/model/player.js": {
+          "bytesInOutput": 1326
         },
         "src/engine/extends/pixi/simple-sprite.js": {
           "bytesInOutput": 107
         },
+        "src/scripts/game/model/shooter.js": {
+          "bytesInOutput": 429
+        },
+        "src/scripts/game/model/Bullet.js": {
+          "bytesInOutput": 195
+        },
+        "src/engine/extends/matter/collider-2d.js": {
+          "bytesInOutput": 897
+        },
         "src/scripts/_scene/game-scene.js": {
-          "bytesInOutput": 137
-        },
-        "src/scripts/level-design/ld-tile-grid.js": {
-          "bytesInOutput": 354
-        },
-        "src/scripts/level-design/ld-grid-map.js": {
-          "bytesInOutput": 863
-        },
-        "src/scripts/level-design/ld-tile.js": {
-          "bytesInOutput": 949
-        },
-        "src/scripts/_scene/level-design-scene.js": {
-          "bytesInOutput": 194
+          "bytesInOutput": 172
         },
         "main.js": {
           "bytesInOutput": 29
         }
       },
-      "bytes": 354531
+      "bytes": 442469
     }
   }
 }

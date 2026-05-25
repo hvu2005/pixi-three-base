@@ -1,29 +1,44 @@
 import { Texture } from "pixi.js";
-import { Scene } from "../../../engine/core/scene";
 import { SimpleSprite } from "../../../engine/extends/pixi/simple-sprite";
+import { PixiObject } from "../../../engine/core/pixi-object";
+import { Bullet } from "./Bullet";
 
 
+/**
+ *@typedef {Object} ShooterConfig
+ *@property {number} [attackSpeed]
+ */
 
-export class Shooter {
+
+export class Shooter extends PixiObject {
     /**
-     * 
-     * @param {Scene} scene 
+     * @param {import("../../../engine/core/scene").Scene} scene
+     * @param {ShooterConfig} config
      */
-    constructor(scene) {
-        this.scene = scene;
+    constructor(scene, config = {}) {
+        super(scene);
+
+        this._intervalTime = 0;
+        this.attackSpeed = config.attackSpeed || 5;
+        this.isShooting = false;
+
+        this.scene.addUpdate(this.update.bind(this));
     }
 
-    shoot(x, y) {
-        const bullet = new SimpleSprite(Texture.WHITE, {
-            width: 10,
-            height: 20,
-        });
+    update(dt) {
+        if(!this.isShooting) return;
+        this._intervalTime += dt;
+        if(this._intervalTime > this.attackSpeed) {
+            this._intervalTime -= this.attackSpeed;
+            this.shoot();
+        }
+    }
 
-        this.scene.addUpdate((dt) => {
-            bullet.y -= 500 * dt;
-        })
-
-        bullet.position.set(x, y);
+    shoot() {
+        const bullet = new Bullet(this.scene);
+        const pos = this.getGlobalPosition();
+        bullet.position.set(pos.x, pos.y - 50);
         this.scene.pixi.add(bullet);
     }
+
 }

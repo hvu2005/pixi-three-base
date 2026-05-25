@@ -34,6 +34,7 @@ export class Scene {
     async init() {
         for (const s of this.systems) {
             await s.init();
+
         }
 
         await this.startScene();
