@@ -1,5 +1,5 @@
-import { loadPixiTexture } from "../../engine/load/load-pixi-texutre";
-import { AS_1 } from "../../engine/service/hot-loader/asset-alias";
+import { loadPixiTexture } from "../../../engine/load/load-pixi-texutre";
+import { AS_1 } from "../../../engine/service/hot-loader/asset-alias";
 
 
 export const Asset = {

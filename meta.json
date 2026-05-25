@@ -18513,7 +18513,7 @@
       "format": "esm"
     },
     "src/engine/core/render/pixi-renderer.js": {
-      "bytes": 1097,
+      "bytes": 1176,
       "imports": [
         {
           "path": "node_modules/pixi.js/lib/index.mjs",
@@ -18555,8 +18555,45 @@
       ],
       "format": "esm"
     },
-    "src/scripts/model/tile.js": {
-      "bytes": 531,
+    "src/scripts/game/model/tile.js": {
+      "bytes": 539,
+      "imports": [
+        {
+          "path": "node_modules/pixi.js/lib/index.mjs",
+          "kind": "import-statement",
+          "original": "pixi.js"
+        },
+        {
+          "path": "src/engine/core/pixi-object.js",
+          "kind": "import-statement",
+          "original": "../../../engine/core/pixi-object"
+        },
+        {
+          "path": "src/engine/extends/pixi/simple-sprite.js",
+          "kind": "import-statement",
+          "original": "../../../engine/extends/pixi/simple-sprite"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/scripts/_scene/game-scene.js": {
+      "bytes": 367,
+      "imports": [
+        {
+          "path": "src/engine/core/scene.js",
+          "kind": "import-statement",
+          "original": "../../engine/core/scene"
+        },
+        {
+          "path": "src/scripts/game/model/tile.js",
+          "kind": "import-statement",
+          "original": "../game/model/tile"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/scripts/level-design/ld-tile-grid.js": {
+      "bytes": 815,
       "imports": [
         {
           "path": "node_modules/pixi.js/lib/index.mjs",
@@ -18576,8 +18613,45 @@
       ],
       "format": "esm"
     },
-    "src/scripts/_scene/game-scene.js": {
-      "bytes": 314,
+    "src/scripts/level-design/ld-grid-map.js": {
+      "bytes": 2063,
+      "imports": [
+        {
+          "path": "src/engine/core/pixi-object.js",
+          "kind": "import-statement",
+          "original": "../../engine/core/pixi-object"
+        },
+        {
+          "path": "src/scripts/level-design/ld-tile-grid.js",
+          "kind": "import-statement",
+          "original": "./ld-tile-grid"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/scripts/level-design/ld-tile.js": {
+      "bytes": 1779,
+      "imports": [
+        {
+          "path": "node_modules/pixi.js/lib/index.mjs",
+          "kind": "import-statement",
+          "original": "pixi.js"
+        },
+        {
+          "path": "src/engine/core/pixi-object.js",
+          "kind": "import-statement",
+          "original": "../../engine/core/pixi-object"
+        },
+        {
+          "path": "src/engine/extends/pixi/simple-sprite.js",
+          "kind": "import-statement",
+          "original": "../../engine/extends/pixi/simple-sprite"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/scripts/_scene/level-design-scene.js": {
+      "bytes": 576,
       "imports": [
         {
           "path": "src/engine/core/scene.js",
@@ -18585,20 +18659,30 @@
           "original": "../../engine/core/scene"
         },
         {
-          "path": "src/scripts/model/tile.js",
+          "path": "src/scripts/level-design/ld-grid-map.js",
           "kind": "import-statement",
-          "original": "../model/tile"
+          "original": "../level-design/ld-grid-map"
+        },
+        {
+          "path": "src/scripts/level-design/ld-tile.js",
+          "kind": "import-statement",
+          "original": "../level-design/ld-tile"
         }
       ],
       "format": "esm"
     },
     "main.js": {
-      "bytes": 106,
+      "bytes": 226,
       "imports": [
         {
           "path": "src/scripts/_scene/game-scene.js",
           "kind": "import-statement",
           "original": "./src/scripts/_scene/game-scene"
+        },
+        {
+          "path": "src/scripts/_scene/level-design-scene.js",
+          "kind": "import-statement",
+          "original": "./src/scripts/_scene/level-design-scene"
         }
       ],
       "format": "esm"
@@ -19457,7 +19541,7 @@
           "bytesInOutput": 69
         },
         "src/engine/core/render/pixi-renderer.js": {
-          "bytesInOutput": 483
+          "bytesInOutput": 545
         },
         "src/engine/core/pixi-object.js": {
           "bytesInOutput": 261
@@ -19465,20 +19549,32 @@
         "src/engine/core/scene.js": {
           "bytesInOutput": 497
         },
-        "src/scripts/model/tile.js": {
-          "bytesInOutput": 193
+        "src/scripts/game/model/tile.js": {
+          "bytesInOutput": 191
         },
         "src/engine/extends/pixi/simple-sprite.js": {
           "bytesInOutput": 107
         },
         "src/scripts/_scene/game-scene.js": {
-          "bytesInOutput": 113
+          "bytesInOutput": 137
+        },
+        "src/scripts/level-design/ld-tile-grid.js": {
+          "bytesInOutput": 354
+        },
+        "src/scripts/level-design/ld-grid-map.js": {
+          "bytesInOutput": 863
+        },
+        "src/scripts/level-design/ld-tile.js": {
+          "bytesInOutput": 949
+        },
+        "src/scripts/_scene/level-design-scene.js": {
+          "bytesInOutput": 194
         },
         "main.js": {
           "bytesInOutput": 29
         }
       },
-      "bytes": 352087
+      "bytes": 354531
     }
   }
 }

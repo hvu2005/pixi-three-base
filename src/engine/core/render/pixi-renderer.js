@@ -12,7 +12,8 @@ export class PixiRenderer extends Renderer {
 
         this.context = context;
         this.renderer = new WebGLRenderer();
-        this.stage = new Container();
+        this.stage = new Container({ eventMode: "static" });
+
     }
 
     /**
@@ -28,6 +29,8 @@ export class PixiRenderer extends Renderer {
         })
 
         !this.context && document.body.appendChild(this.renderer.canvas);
+
+        this.stage.hitArea = this.renderer.screen;
     }
 
     /**
