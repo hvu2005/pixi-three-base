@@ -1,4 +1,5 @@
 import { Scene } from "../../engine/core/scene";
+import { EnemyController } from "../game/controller/enemy-controller";
 import { Player } from "../game/model/player";
 
 class GameScene extends Scene {
@@ -14,6 +15,10 @@ class GameScene extends Scene {
         player.position.set(window.innerWidth * 0.5, window.innerHeight * 0.8);
         this.pixi.add(player);
         
+        const enemyController = new EnemyController(this);
+        const enemy = enemyController.getEnemy("grunt");
+        enemy.position.set(600, window.innerHeight * 0.2);
+        this.pixi.add(enemy);
     }
 }
 
