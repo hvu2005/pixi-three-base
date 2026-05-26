@@ -1,5 +1,5 @@
 
-import { Container, WebGLRenderer, ContainerChild } from "pixi.js";
+import { Container, WebGLRenderer, ContainerChild, Rectangle } from "pixi.js";
 import { Renderer } from "./abstract/renderer";
 
 export class PixiRenderer extends Renderer {
@@ -49,5 +49,16 @@ export class PixiRenderer extends Renderer {
         this.stage.addChild(object);
 
         return object;
+    }
+
+    resize(width, height) {
+        // --- PIXI.JS ---
+        const renderer = this.renderer;
+
+        renderer.canvas.style.width = window.innerWidth + "px";
+        renderer.canvas.style.height = window.innerHeight + "px";
+
+        renderer.resize(width, height);
+        this.stage.hitArea = new Rectangle(0, 0, width, height);
     }
 }

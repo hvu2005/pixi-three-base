@@ -18534,7 +18534,7 @@
       "format": "cjs"
     },
     "src/engine/core/physics/matter-physics.js": {
-      "bytes": 5361,
+      "bytes": 5323,
       "imports": [
         {
           "path": "node_modules/matter-js/build/matter.js",
@@ -18545,7 +18545,7 @@
       "format": "esm"
     },
     "src/engine/core/scene.js": {
-      "bytes": 1878,
+      "bytes": 1880,
       "imports": [
         {
           "path": "src/engine/core/pixi-object.js",
@@ -18635,7 +18635,7 @@
       "format": "esm"
     },
     "src/scripts/game/model/player.js": {
-      "bytes": 2385,
+      "bytes": 2742,
       "imports": [
         {
           "path": "src/engine/core/pixi-object.js",
@@ -18666,7 +18666,7 @@
       "format": "esm"
     },
     "src/scripts/_scene/game-scene.js": {
-      "bytes": 420,
+      "bytes": 467,
       "imports": [
         {
           "path": "src/engine/core/scene.js",
@@ -19552,7 +19552,7 @@
           "bytesInOutput": 84544
         },
         "src/engine/core/physics/matter-physics.js": {
-          "bytesInOutput": 2774
+          "bytesInOutput": 2744
         },
         "src/engine/core/pixi-object.js": {
           "bytesInOutput": 261
@@ -19561,7 +19561,7 @@
           "bytesInOutput": 582
         },
         "src/scripts/game/model/player.js": {
-          "bytesInOutput": 1326
+          "bytesInOutput": 1528
         },
         "src/engine/extends/pixi/simple-sprite.js": {
           "bytesInOutput": 107
@@ -19576,13 +19576,13 @@
           "bytesInOutput": 897
         },
         "src/scripts/_scene/game-scene.js": {
-          "bytesInOutput": 172
+          "bytesInOutput": 193
         },
         "main.js": {
           "bytesInOutput": 29
         }
       },
-      "bytes": 442469
+      "bytes": 442662
     }
   }
 }

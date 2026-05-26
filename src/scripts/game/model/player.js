@@ -29,6 +29,14 @@ export class Player extends PixiObject {
         });
         this.add(this.sprite);
 
+        this.subSprite = new SimpleSprite(Texture.WHITE, {
+            width: 60,
+            height: 20,
+            tint: 0xff0000,
+        });
+        this.subSprite.position.set(0, -50);
+        this.add(this.subSprite);
+
         this.shooter = new Shooter(scene, {
             attackSpeed: 0.35,
         });
@@ -38,19 +46,14 @@ export class Player extends PixiObject {
             width: 100,
             height: 100,
             isStatic: true,
-            render: {
-                strokeStyle: "#00ff00",
-                lineWidth: 3,
-                fillStyle: "transparent",
-            }
         });
-        this.scene.matter.add(this.collider);
+        this.matter.add(this.collider);
 
         this.scene.addUpdate(this.update.bind(this));
     }
 
     update(dt) {
-
+ 
     }
 
     _onpointerdown(e) {
@@ -64,7 +67,7 @@ export class Player extends PixiObject {
         this.scene.pixi.stage.on("pointerup", this._onpointerupBound);
         this.scene.pixi.stage.on("pointerupoutside", this._onpointerupBound);
 
-        this.shooter.isShooting = true;
+        this.shooter.start();
     }
 
     _onpointermove(e) {
@@ -88,6 +91,7 @@ export class Player extends PixiObject {
         this.scene.pixi.stage.off("pointerup", this._onpointerupBound);
         this.scene.pixi.stage.off("pointerupoutside", this._onpointerupBound);
 
-        this.shooter.isShooting = false;
+        this.shooter.stop();
+
     }
 }

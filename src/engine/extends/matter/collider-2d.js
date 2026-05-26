@@ -1,4 +1,4 @@
-import { Bodies, Body } from "matter-js";
+import { Bodies, Body, Sleeping } from "matter-js";
 
 /**
  * @typedef {import("matter-js").IChamferableBodyDefinition & {
@@ -16,12 +16,17 @@ export class Collider2d {
      */
     constructor(owner, options = {}) {
         this.owner = owner;
-        
+
         const defaultOptions = {
             x: owner?.position?.x ?? 0,
             y: owner?.position?.y ?? 0,
             width: 100,
             height: 100,
+            render: {
+                strokeStyle: "#00ff00",
+                lineWidth: 3,
+                fillStyle: "transparent",
+            }
         };
 
         /** @type {Collider2dOptions} */
@@ -37,6 +42,8 @@ export class Collider2d {
             height,
             ...bodyOptions
         } = mergedOptions;
+
+        this._isSyncedToPhysics = false;
 
         this.body = Bodies.rectangle(
             x,
@@ -101,16 +108,38 @@ export class Collider2d {
         return this.body.position.x;
     }
 
+    get y() {
+        return this.body.position.y;
+    }
+
 
     /**
      * Sync Pixi object position từ physics body
      * Gọi sau khi physics engine update
      */
     syncFromPhysics() {
-        if (this.owner) {
-            this.owner.position.set(this.body.position.x, this.body.position.y);
-            this.owner.rotation = this.body.angle;
+        if (!this._isSyncedToPhysics) {
+            Body.setStatic(this.body, false);
+            Sleeping.set(this.body, false);
+            this._isSyncedToPhysics = true;
         }
+
+        const worldX = this.body.position.x;
+        const worldY = this.body.position.y;
+
+        if (this.owner.parent) {
+            const localPos = this.owner.parent.toLocal({
+                x: worldX,
+                y: worldY,
+            });
+
+            this.owner.position.set(localPos.x, localPos.y);
+        } else {
+            this.owner.position.set(worldX, worldY);
+        }
+
+        this.owner.rotation = this.body.angle;
+
     }
 
     /**
@@ -120,8 +149,11 @@ export class Collider2d {
     syncToPhysics() {
         Body.setPosition(this.body, this.owner.position);
         Body.setAngle(this.body, this.owner.rotation);
-    }
-    get y() {
-        return this.body.position.y;
+
+        if (this._isSyncedToPhysics) {
+            Body.setStatic(this.body, true);
+            this._isSyncedToPhysics = false;
+        }
+
     }
 }

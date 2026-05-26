@@ -42,4 +42,12 @@ export class PixiObject extends Container {
         return child;
     }
 
+    get matter() {
+        return this.scene.matter;
+    }
+
+    get pixi() {
+        return this.scene.pixi;
+    }
+
 }

@@ -28,6 +28,13 @@ export class MatterPhysics {
 
     }
 
+    resize(width, height) {
+        this.setDebugOptions({
+            width: width,
+            height: height,
+        });
+    }
+
     get debug() {
         return this._debug;
     }
@@ -68,12 +75,15 @@ export class MatterPhysics {
     _createDebugRender() {
         if (this.debugRender) return;
 
+        const logicWidth = this.debugOptions.width;
+        const logicHeight = this.debugOptions.height;
+
         this.debugRender = Render.create({
             element: this.debugContainer,
             engine: this.engine,
             options: {
-                width: this.debugOptions.width,
-                height: this.debugOptions.height,
+                width: logicWidth,
+                height: logicHeight,
 
                 wireframes: false,
                 background: "transparent",
@@ -90,7 +100,14 @@ export class MatterPhysics {
 
         Render.run(this.debugRender);
 
-        const canvas = this.debugRender.canvas;
+        const render = this.debugRender;
+        const canvas = render.canvas;
+
+        canvas.width = logicWidth;
+        canvas.height = logicHeight;
+
+        canvas.style.width = window.innerWidth + "px";
+        canvas.style.height = window.innerHeight + "px";
 
         canvas.style.position = "absolute";
         canvas.style.left = "0px";
@@ -98,6 +115,16 @@ export class MatterPhysics {
         canvas.style.pointerEvents = "none";
         canvas.style.zIndex = "999999";
         canvas.style.background = "transparent";
+
+        render.bounds.min.x = 0;
+        render.bounds.min.y = 0;
+        render.bounds.max.x = logicWidth;
+        render.bounds.max.y = logicHeight;
+
+        Render.lookAt(render, {
+            min: { x: 0, y: 0 },
+            max: { x: logicWidth, y: logicHeight },
+        });
     }
 
     _destroyDebugRender() {

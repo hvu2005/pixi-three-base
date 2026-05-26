@@ -27,6 +27,7 @@ export class Shooter extends PixiObject {
 
     update(dt) {
         if(!this.isShooting) return;
+        
         this._intervalTime += dt;
         if(this._intervalTime > this.attackSpeed) {
             this._intervalTime -= this.attackSpeed;
@@ -35,10 +36,16 @@ export class Shooter extends PixiObject {
     }
 
     shoot() {
-        const bullet = new Bullet(this.scene);
-        const pos = this.getGlobalPosition();
-        bullet.position.set(pos.x, pos.y - 50);
-        this.scene.pixi.add(bullet);
+        
+    }
+
+    start() {
+        this.isShooting = true;
+    }
+
+    stop() {
+        this.isShooting = false;
+        this._intervalTime = 0;
     }
 
 }

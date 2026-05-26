@@ -1,4 +1,7 @@
+import Stats from "three/examples/jsm/libs/stats.module.js";
 import { GameObject } from "./pixi-object";
+
+
 
 export class Scene {
     constructor() {
@@ -29,6 +32,43 @@ export class Scene {
             this.systems.push(this.cannon);
         }
 
+        this.stats = new Stats();
+        document.body.appendChild(this.stats.dom);
+    }
+
+    /**
+     * @returns {{ width: number, height: number }}
+     */
+    _getLogicalSize() {
+        const DESIGN_WIDTH = 1028;
+        const DESIGN_HEIGHT = 783;
+
+        const windowW = window.innerWidth;
+        const windowH = window.innerHeight;
+
+        let logicWidth, logicHeight, scale;
+
+        // --- Tính toán scale logic ---
+        if (windowW <= windowH) {
+            // Portrait → fit width
+            scale = windowW / DESIGN_WIDTH;
+            logicWidth = DESIGN_WIDTH;
+            logicHeight = windowH / scale;
+        } else {
+            // Landscape → fit height
+            scale = windowH / DESIGN_HEIGHT;
+            logicHeight = DESIGN_HEIGHT;
+            logicWidth = windowW / scale;
+        }
+        return { width: logicWidth, height: logicHeight };
+    }
+
+
+    resize() {
+        const { width, height } = this._getLogicalSize();
+        for (const s of this.systems) {
+            s.resize?.(width, height);
+        }
     }
 
     async init() {
@@ -36,6 +76,9 @@ export class Scene {
             await s.init();
 
         }
+
+        this.resize();
+        window.addEventListener("resize", this.resize.bind(this));
 
         await this.startScene();
         this._startLoop();
@@ -47,6 +90,9 @@ export class Scene {
     }
 
     update(dt) {
+
+        this.stats.begin();
+
         for (const s of this.systems) {
             s.update(dt);
         }
@@ -54,8 +100,10 @@ export class Scene {
         for (const cb of this.ticker) {
             cb(dt);
         }
+
+        this.stats.end();
     }
-    
+
     /**
      * 
      * @param {Function} callback 
