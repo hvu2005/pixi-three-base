@@ -1,3 +1,4 @@
+import { PixiObject } from "../../../engine/core/pixi-object";
 import { GruntEnemy } from "../model/enemies";
 
 
@@ -8,7 +9,7 @@ export class EnemyController extends PixiObject {
         super(scene);
 
         this.enemies = {
-            "grunt": () => new GruntEnemy(),
+            "grunt": (scene) => new GruntEnemy(scene),
         }
     }
 
@@ -18,7 +19,7 @@ export class EnemyController extends PixiObject {
     getEnemy(type) {
         const enemyFactory = this.enemies[type];
         if (enemyFactory) {
-            return enemyFactory();
+            return enemyFactory(this.scene);
         }
         return null;
     }
