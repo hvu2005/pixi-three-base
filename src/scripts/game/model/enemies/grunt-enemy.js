@@ -1,6 +1,7 @@
 import { Enemy } from "./enemy";
 import { AnimatedSprite, Texture } from "pixi.js";
 import { Collider2d } from "../../../../engine/extends/matter/collider-2d";
+import { createCollisionFilter } from "../../config/collision-layer";
 
 export class GruntEnemy extends Enemy {
     static type = "grunt";
@@ -26,9 +27,9 @@ export class GruntEnemy extends Enemy {
         this.collider = new Collider2d(this, {
             width: 42,
             height: 42,
-            isStatic: true,
             isSensor: true,
+            collisionFilter: createCollisionFilter("ENEMY"),
         });
-        this.matter.add(this.collider);
+        this.addComponent(this.collider);
     }
 }

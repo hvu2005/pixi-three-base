@@ -3,8 +3,9 @@ import { Engine, Events, World, Render } from "matter-js";
 export class MatterPhysics {
     constructor() {
         this.engine = Engine.create({
-            enableSleeping: true,
+            enableSleeping: false,
         });
+        this.engine.gravity.y = 0;
 
         this.world = this.engine.world;
 
@@ -150,12 +151,12 @@ export class MatterPhysics {
 
                 if (!colA || !colB) continue;
 
-                if (colA.enabled !== false && colA.onCollisionEnter) {
-                    colA.onCollisionEnter(colB);
+                if (colA.enabled !== false && colA.oncollisionenter) {
+                    colA.oncollisionenter(colB);
                 }
 
-                if (colB.enabled !== false && colB.onCollisionEnter) {
-                    colB.onCollisionEnter(colA);
+                if (colB.enabled !== false && colB.oncollisionenter) {
+                    colB.oncollisionenter(colA);
                 }
             }
         });
@@ -167,12 +168,12 @@ export class MatterPhysics {
 
                 if (!colA || !colB) continue;
 
-                if (colA.enabled !== false && colA.onCollisionExit) {
-                    colA.onCollisionExit(colB);
+                if (colA.enabled !== false && colA.oncollisionexit) {
+                    colA.oncollisionexit(colB);
                 }
 
-                if (colB.enabled !== false && colB.onCollisionExit) {
-                    colB.onCollisionExit(colA);
+                if (colB.enabled !== false && colB.oncollisionexit) {
+                    colB.oncollisionexit(colA);
                 }
             }
         });
@@ -184,12 +185,12 @@ export class MatterPhysics {
 
                 if (!colA || !colB) continue;
 
-                if (colA.enabled !== false && colA.onCollisionStay) {
-                    colA.onCollisionStay(colB);
+                if (colA.enabled !== false && colA.oncollisionstay) {
+                    colA.oncollisionstay(colB);
                 }
 
-                if (colB.enabled !== false && colB.onCollisionStay) {
-                    colB.onCollisionStay(colA);
+                if (colB.enabled !== false && colB.oncollisionstay) {
+                    colB.oncollisionstay(colA);
                 }
             }
         });

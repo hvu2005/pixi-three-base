@@ -1,8 +1,9 @@
 import { PixiObject } from "../../../engine/core/pixi-object";
 import { Sprite, Texture } from "pixi.js";
 import { SimpleSprite } from "../../../engine/extends/pixi/simple-sprite";
-import { Shooter } from "./shooter";
+import { Shooter } from "./shooters/shooter";
 import { Collider2d } from "../../../engine/extends/matter/collider-2d";
+import { createCollisionFilter } from "../config/collision-layer";
 
 
 
@@ -42,18 +43,20 @@ export class Player extends PixiObject {
         });
         this.add(this.shooter);
 
-        this.collider = new Collider2d(this, {
+        this.collider = new Collider2d(this.scene, {
             width: 100,
             height: 100,
-            isStatic: true,
+            isSensor: true,
+            collisionFilter: createCollisionFilter("PLAYER"),
         });
-        this.matter.add(this.collider);
+        this.addComponent(this.collider);
 
-        this.scene.addUpdate(this.update.bind(this));
     }
 
     update(dt) {
- 
+    }
+
+    oncollisionenter(other) {
     }
 
     _onpointerdown(e) {

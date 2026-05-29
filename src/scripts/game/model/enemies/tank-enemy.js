@@ -1,6 +1,7 @@
 import { Enemy } from "./enemy";
 import { AnimatedSprite, Texture } from "pixi.js";
 import { Collider2d } from "../../../../engine/extends/matter/collider-2d";
+import { createCollisionFilter } from "../../config/collision-layer";
 
 export class TankEnemy extends Enemy {
     static type = "tank";
@@ -27,6 +28,7 @@ export class TankEnemy extends Enemy {
             height: 64,
             isStatic: true,
             isSensor: true,
+            collisionFilter: createCollisionFilter("ENEMY"),
         });
         this.matter.add(this.collider);
     }

@@ -1,5 +1,10 @@
 {
   "inputs": {
+    "node_modules/three/examples/jsm/libs/stats.module.js": {
+      "bytes": 3514,
+      "imports": [],
+      "format": "esm"
+    },
     "node_modules/pixi.js/lib/extensions/Extensions.mjs": {
       "bytes": 8874,
       "imports": [],
@@ -18492,7 +18497,7 @@
       "format": "esm"
     },
     "src/engine/core/pixi-object.js": {
-      "bytes": 982,
+      "bytes": 1106,
       "imports": [
         {
           "path": "node_modules/pixi.js/lib/index.mjs",
@@ -18513,7 +18518,7 @@
       "format": "esm"
     },
     "src/engine/core/render/pixi-renderer.js": {
-      "bytes": 1176,
+      "bytes": 1537,
       "imports": [
         {
           "path": "node_modules/pixi.js/lib/index.mjs",
@@ -18534,7 +18539,7 @@
       "format": "cjs"
     },
     "src/engine/core/physics/matter-physics.js": {
-      "bytes": 5323,
+      "bytes": 6062,
       "imports": [
         {
           "path": "node_modules/matter-js/build/matter.js",
@@ -18545,8 +18550,13 @@
       "format": "esm"
     },
     "src/engine/core/scene.js": {
-      "bytes": 1880,
+      "bytes": 3188,
       "imports": [
+        {
+          "path": "node_modules/three/examples/jsm/libs/stats.module.js",
+          "kind": "import-statement",
+          "original": "three/examples/jsm/libs/stats.module.js"
+        },
         {
           "path": "src/engine/core/pixi-object.js",
           "kind": "import-statement",
@@ -18561,6 +18571,154 @@
           "path": "src/engine/core/physics/matter-physics.js",
           "kind": "require-call",
           "original": "./physics/matter-physics"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/scripts/game/model/enemies/enemy.js": {
+      "bytes": 1840,
+      "imports": [
+        {
+          "path": "src/engine/core/pixi-object.js",
+          "kind": "import-statement",
+          "original": "../../../../engine/core/pixi-object"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/engine/extends/matter/collider-2d.js": {
+      "bytes": 3562,
+      "imports": [
+        {
+          "path": "node_modules/matter-js/build/matter.js",
+          "kind": "import-statement",
+          "original": "matter-js"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/scripts/game/model/enemies/grunt-enemy.js": {
+      "bytes": 967,
+      "imports": [
+        {
+          "path": "src/scripts/game/model/enemies/enemy.js",
+          "kind": "import-statement",
+          "original": "./enemy"
+        },
+        {
+          "path": "node_modules/pixi.js/lib/index.mjs",
+          "kind": "import-statement",
+          "original": "pixi.js"
+        },
+        {
+          "path": "src/engine/extends/matter/collider-2d.js",
+          "kind": "import-statement",
+          "original": "../../../../engine/extends/matter/collider-2d"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/scripts/game/model/enemies/tank-enemy.js": {
+      "bytes": 926,
+      "imports": [
+        {
+          "path": "src/scripts/game/model/enemies/enemy.js",
+          "kind": "import-statement",
+          "original": "./enemy"
+        },
+        {
+          "path": "node_modules/pixi.js/lib/index.mjs",
+          "kind": "import-statement",
+          "original": "pixi.js"
+        },
+        {
+          "path": "src/engine/extends/matter/collider-2d.js",
+          "kind": "import-statement",
+          "original": "../../../../engine/extends/matter/collider-2d"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/scripts/game/model/enemies/runner-enemy.js": {
+      "bytes": 1138,
+      "imports": [
+        {
+          "path": "src/scripts/game/model/enemies/enemy.js",
+          "kind": "import-statement",
+          "original": "./enemy"
+        },
+        {
+          "path": "node_modules/pixi.js/lib/index.mjs",
+          "kind": "import-statement",
+          "original": "pixi.js"
+        },
+        {
+          "path": "src/engine/extends/matter/collider-2d.js",
+          "kind": "import-statement",
+          "original": "../../../../engine/extends/matter/collider-2d"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/scripts/game/model/enemies/shooter-enemy.js": {
+      "bytes": 934,
+      "imports": [
+        {
+          "path": "src/scripts/game/model/enemies/enemy.js",
+          "kind": "import-statement",
+          "original": "./enemy"
+        },
+        {
+          "path": "node_modules/pixi.js/lib/index.mjs",
+          "kind": "import-statement",
+          "original": "pixi.js"
+        },
+        {
+          "path": "src/engine/extends/matter/collider-2d.js",
+          "kind": "import-statement",
+          "original": "../../../../engine/extends/matter/collider-2d"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/scripts/game/model/enemies/index.js": {
+      "bytes": 386,
+      "imports": [
+        {
+          "path": "src/scripts/game/model/enemies/grunt-enemy.js",
+          "kind": "import-statement",
+          "original": "./grunt-enemy"
+        },
+        {
+          "path": "src/scripts/game/model/enemies/tank-enemy.js",
+          "kind": "import-statement",
+          "original": "./tank-enemy"
+        },
+        {
+          "path": "src/scripts/game/model/enemies/runner-enemy.js",
+          "kind": "import-statement",
+          "original": "./runner-enemy"
+        },
+        {
+          "path": "src/scripts/game/model/enemies/shooter-enemy.js",
+          "kind": "import-statement",
+          "original": "./shooter-enemy"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/scripts/game/controller/enemy-controller.js": {
+      "bytes": 560,
+      "imports": [
+        {
+          "path": "src/engine/core/pixi-object.js",
+          "kind": "import-statement",
+          "original": "../../../engine/core/pixi-object"
+        },
+        {
+          "path": "src/scripts/game/model/enemies/index.js",
+          "kind": "import-statement",
+          "original": "../model/enemies"
         }
       ],
       "format": "esm"
@@ -18598,7 +18756,7 @@
       "format": "esm"
     },
     "src/scripts/game/model/shooter.js": {
-      "bytes": 1167,
+      "bytes": 1152,
       "imports": [
         {
           "path": "node_modules/pixi.js/lib/index.mjs",
@@ -18623,19 +18781,8 @@
       ],
       "format": "esm"
     },
-    "src/engine/extends/matter/collider-2d.js": {
-      "bytes": 2737,
-      "imports": [
-        {
-          "path": "node_modules/matter-js/build/matter.js",
-          "kind": "import-statement",
-          "original": "matter-js"
-        }
-      ],
-      "format": "esm"
-    },
     "src/scripts/game/model/player.js": {
-      "bytes": 2742,
+      "bytes": 2798,
       "imports": [
         {
           "path": "src/engine/core/pixi-object.js",
@@ -18666,12 +18813,17 @@
       "format": "esm"
     },
     "src/scripts/_scene/game-scene.js": {
-      "bytes": 467,
+      "bytes": 748,
       "imports": [
         {
           "path": "src/engine/core/scene.js",
           "kind": "import-statement",
           "original": "../../engine/core/scene"
+        },
+        {
+          "path": "src/scripts/game/controller/enemy-controller.js",
+          "kind": "import-statement",
+          "original": "../game/controller/enemy-controller"
         },
         {
           "path": "src/scripts/game/model/player.js",
@@ -19254,6 +19406,9 @@
         "node_modules/pixi.js/lib/scene/graphics/gpu/colorToUniform.mjs": {
           "bytesInOutput": 149
         },
+        "node_modules/pixi.js/lib/scene/sprite-animated/AnimatedSprite.mjs": {
+          "bytesInOutput": 3851
+        },
         "node_modules/pixi.js/lib/rendering/high-shader/shader-bits/localUniformBit.mjs": {
           "bytesInOutput": 1138
         },
@@ -19540,49 +19695,70 @@
           "bytesInOutput": 509
         },
         "node_modules/pixi.js/lib/index.mjs": {
-          "bytesInOutput": 83
+          "bytesInOutput": 93
         },
         "src/engine/core/render/abstract/renderer.js": {
           "bytesInOutput": 69
         },
         "src/engine/core/render/pixi-renderer.js": {
-          "bytesInOutput": 545
+          "bytesInOutput": 716
         },
         "node_modules/matter-js/build/matter.js": {
           "bytesInOutput": 84544
         },
         "src/engine/core/physics/matter-physics.js": {
-          "bytesInOutput": 2744
+          "bytesInOutput": 3028
+        },
+        "node_modules/three/examples/jsm/libs/stats.module.js": {
+          "bytesInOutput": 1747
         },
         "src/engine/core/pixi-object.js": {
-          "bytesInOutput": 261
+          "bytesInOutput": 333
         },
         "src/engine/core/scene.js": {
-          "bytesInOutput": 582
+          "bytesInOutput": 990
+        },
+        "src/scripts/game/model/enemies/enemy.js": {
+          "bytesInOutput": 773
+        },
+        "src/scripts/game/model/enemies/grunt-enemy.js": {
+          "bytesInOutput": 430
+        },
+        "src/engine/extends/matter/collider-2d.js": {
+          "bytesInOutput": 1294
+        },
+        "src/scripts/game/model/enemies/tank-enemy.js": {
+          "bytesInOutput": 5
+        },
+        "src/scripts/game/model/enemies/runner-enemy.js": {
+          "bytesInOutput": 5
+        },
+        "src/scripts/game/model/enemies/shooter-enemy.js": {
+          "bytesInOutput": 5
+        },
+        "src/scripts/game/controller/enemy-controller.js": {
+          "bytesInOutput": 146
         },
         "src/scripts/game/model/player.js": {
-          "bytesInOutput": 1528
+          "bytesInOutput": 1568
         },
         "src/engine/extends/pixi/simple-sprite.js": {
           "bytesInOutput": 107
         },
         "src/scripts/game/model/shooter.js": {
-          "bytesInOutput": 429
+          "bytesInOutput": 402
         },
         "src/scripts/game/model/Bullet.js": {
-          "bytesInOutput": 195
-        },
-        "src/engine/extends/matter/collider-2d.js": {
-          "bytesInOutput": 897
+          "bytesInOutput": 5
         },
         "src/scripts/_scene/game-scene.js": {
-          "bytesInOutput": 193
+          "bytesInOutput": 289
         },
         "main.js": {
           "bytesInOutput": 29
         }
       },
-      "bytes": 442662
+      "bytes": 450885
     }
   }
 }

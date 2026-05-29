@@ -1,4 +1,5 @@
 import { PixiObject } from "../../../../engine/core/pixi-object";
+import { Collider2d } from "../../../../engine/extends/matter/collider-2d";
 
 
 
@@ -25,11 +26,16 @@ export class Enemy extends PixiObject {
         this.hp = this.maxHp;
         this.isAlive = true;
         this.onDead = this.data.onDead || null;
+
+        /**
+         * @type {Collider2d|null}
+         */
         this.collider = null;
 
-        this._onUpdate = this.update.bind(this);
+    }
 
-        this.scene.addUpdate(this._onUpdate);
+    oncollisionenter(other) {
+        console.log("Enemy collided with", other);
     }
 
     update(dt) {

@@ -1,25 +1,27 @@
 import { Bodies, Body, Sleeping } from "matter-js";
+import { Component2D } from "../../core/component-2d";
 
 /**
  * @typedef {import("matter-js").IChamferableBodyDefinition & {
  *   x?: number,
  *   y?: number,
  *   width?: number,
- *   height?: number
+ *   height?: number,
+ * 
  * }} Collider2dOptions
  */
 
-export class Collider2d {
+export class Collider2d extends Component2D {
     /**
-     * @param {import("../../../engine/core/pixi-object").PixiObject} owner
+     * @param {import("../../core/scene").Scene} scene
      * @param {Collider2dOptions} options
      */
-    constructor(owner, options = {}) {
-        this.owner = owner;
+    constructor(scene, options = {}) {
+        super(scene);
 
         const defaultOptions = {
-            x: owner?.position?.x ?? 0,
-            y: owner?.position?.y ?? 0,
+            x: this.gameObject?.position?.x ?? 0,
+            y: this.gameObject?.position?.y ?? 0,
             width: 100,
             height: 100,
             render: {
@@ -52,6 +54,20 @@ export class Collider2d {
             height,
             bodyOptions
         );
+
+        this.scene.matter.add(this);
+    }
+
+    oncollisionenter(other) {
+        this.gameObject?.oncollisionenter?.(other);
+    }
+
+    oncollisionexit(other) {
+        this.gameObject?.oncollisionexit?.(other);
+    }
+
+    oncollisionstay(other) {
+        this.gameObject?.oncollisionstay?.(other);
     }
 
     /**
@@ -60,8 +76,8 @@ export class Collider2d {
      */
     setPosition(x, y) {
         Body.setPosition(this.body, { x, y });
-        if (this.owner) {
-            this.owner.position.set(x, y);
+        if (this.gameObject) {
+            this.gameObject.position.set(x, y);
         }
     }
 
@@ -127,18 +143,18 @@ export class Collider2d {
         const worldX = this.body.position.x;
         const worldY = this.body.position.y;
 
-        if (this.owner.parent) {
-            const localPos = this.owner.parent.toLocal({
+        if (this.gameObject.parent) {
+            const localPos = this.gameObject.parent.toLocal({
                 x: worldX,
                 y: worldY,
             });
 
-            this.owner.position.set(localPos.x, localPos.y);
+            this.gameObject.position.set(localPos.x, localPos.y);
         } else {
-            this.owner.position.set(worldX, worldY);
+            this.gameObject.position.set(worldX, worldY);
         }
 
-        this.owner.rotation = this.body.angle;
+        this.gameObject.rotation = this.body.angle;
 
     }
 
@@ -147,13 +163,13 @@ export class Collider2d {
      * Gọi khi Pixi object position thay đổi trực tiếp
      */
     syncToPhysics() {
-        Body.setPosition(this.body, this.owner.position);
-        Body.setAngle(this.body, this.owner.rotation);
+        Body.setPosition(this.body, this.gameObject.position);
+        Body.setAngle(this.body, this.gameObject.rotation);
 
         if (this._isSyncedToPhysics) {
             Body.setStatic(this.body, true);
             this._isSyncedToPhysics = false;
+            
         }
-
     }
 }

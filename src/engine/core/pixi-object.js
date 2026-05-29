@@ -11,10 +11,21 @@ export class PixiObject extends Container {
     constructor(scene, options) {
         super(options);
         this.scene = scene;
+
+        /**
+         * @type {import("./component-2d").Component2D[]}
+         */
+        this.components = [];
+
+        /**
+         * @private
+         */
+        this._update = this.update.bind(this);
+
+        this.scene.addUpdate(this._update);
     }
 
     /**
-     * 
      * @param {...import("pixi.js").DisplayObject[]} child 
      */
     add(...child) {
@@ -22,11 +33,34 @@ export class PixiObject extends Container {
     }
 
     /**
-     * 
      * @param {...import("pixi.js").DisplayObject[]} child 
      */
     remove(...child) {
         return super.removeChild(...child);
+    }
+
+    update(dt) {
+        // To be overridden by subclasses
+    }
+
+    onVisible() {
+
+    }
+
+    onInvisible() {
+
+    }
+
+    /**
+     * @template {import("./component-2d").Component2D} T
+     * @param {T} component
+     * @returns {T}
+     */
+    addComponent(component) {
+        this.components.push(component);
+        component.gameObject = this;
+
+        return component;
     }
 
     /**
@@ -42,12 +76,37 @@ export class PixiObject extends Container {
         return child;
     }
 
+    destroy() {
+        this.scene.removeUpdate(this._update);
+        super.destroy();
+    }
+
     get matter() {
         return this.scene.matter;
     }
 
     get pixi() {
         return this.scene.pixi;
+    }
+
+    get visible() {
+        return super.visible;
+    }
+
+    set visible(value) {
+        const oldValue = super.visible;
+
+        if (oldValue === value) return;
+
+        super.visible = value;
+
+        if (value) {
+            this.onVisible();
+        } else {
+            this.onInvisible();
+        }
+
+        // this.onVisibleChanged(value, oldValue);
     }
 
 }

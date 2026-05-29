@@ -1,7 +1,7 @@
 import { Texture } from "pixi.js";
-import { SimpleSprite } from "../../../engine/extends/pixi/simple-sprite";
-import { PixiObject } from "../../../engine/core/pixi-object";
-import { Bullet } from "./Bullet";
+import { SimpleSprite } from "../../../../engine/extends/pixi/simple-sprite";
+import { PixiObject } from "../../../../engine/core/pixi-object";
+import { Bullet } from "../bullets/bullet";
 
 
 /**
@@ -12,7 +12,7 @@ import { Bullet } from "./Bullet";
 
 export class Shooter extends PixiObject {
     /**
-     * @param {import("../../../engine/core/scene").Scene} scene
+     * @param {import("../../../../engine/core/scene").Scene} scene
      * @param {ShooterConfig} config
      */
     constructor(scene, config = {}) {
@@ -22,7 +22,6 @@ export class Shooter extends PixiObject {
         this.attackSpeed = config.attackSpeed || 5;
         this.isShooting = false;
 
-        this.scene.addUpdate(this.update.bind(this));
     }
 
     update(dt) {
@@ -36,7 +35,9 @@ export class Shooter extends PixiObject {
     }
 
     shoot() {
-        
+        const bullet = new Bullet(this.scene);
+        bullet.position.set(this.parent.x, this.parent.y - 50);
+        this.pixi.add(bullet);
     }
 
     start() {

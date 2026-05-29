@@ -1,6 +1,8 @@
 import { Texture } from "pixi.js";
 import { PixiObject } from "../../../../engine/core/pixi-object";
+import { Collider2d } from "../../../../engine/extends/matter/collider-2d";
 import { SimpleSprite } from "../../../../engine/extends/pixi/simple-sprite";
+import { createCollisionFilter } from "../../config/collision-layer";
 
 
 export class Item extends PixiObject {
@@ -18,6 +20,14 @@ export class Item extends PixiObject {
             tint: 0x66ff66,
         });
         this.add(this.sprite);
+
+        this.collider = new Collider2d(this.scene, {
+            width: 24,
+            height: 24,
+            isSensor: true,
+            collisionFilter: createCollisionFilter("ITEM"),
+        });
+        this.addComponent(this.collider);
     }
 
     /**
