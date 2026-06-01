@@ -14,7 +14,9 @@ export class ObjectPool {
         this.pool = [];
 
         for (let i = 0; i < size; i++) {
-            this.pool.push(this.createFunc());
+            const obj = this.createFunc();
+            obj.visible = false;
+            this.pool.push(obj);
         }
     }
 
@@ -25,7 +27,6 @@ export class ObjectPool {
         const obj = this.pool.length > 0 ? this.pool.pop() : this.createFunc();
         obj.visible = true;
         return obj;
-
     }
 
     /**

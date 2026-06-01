@@ -20,7 +20,10 @@ export class PixiObject extends Container {
         /**
          * @private
          */
-        this._update = this.update.bind(this);
+        this._update = (dt) => {
+            if (!this.visible) return;
+            this.update(dt);
+        };
 
         this.scene.addUpdate(this._update);
     }

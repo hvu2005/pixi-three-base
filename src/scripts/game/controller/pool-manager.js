@@ -2,12 +2,14 @@ import { PixiObject } from "../../../engine/core/pixi-object";
 import { ObjectPool } from "../../../engine/utils/object-pool";
 import { Bullet } from "../model/bullets/bullet";
 
-/**
- * @type {PoolManager}
- */
-export let poolManager = null;
+
 
 export class PoolManager extends PixiObject {
+    /**
+     * @type {PoolManager}
+     */
+    static instance;
+
     constructor(scene) {
         super(scene);
 
@@ -16,11 +18,11 @@ export class PoolManager extends PixiObject {
          */
         this.pools = new Map();
 
-        if (!poolManager) {
-            poolManager = this;
+        if (!PoolManager.instance) {
+            PoolManager.instance = this;
         }
 
-        this.createPool(Bullet.name, () => new Bullet(this.scene), 20);
+        this.createPool(Bullet.name, () => new Bullet(this.scene), 10);
     }
 
     createPool(key, createFunc, size = 2) {

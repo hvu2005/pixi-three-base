@@ -112,6 +112,13 @@ export class Scene {
         this.ticker.push(callback);
     }
 
+    removeUpdate(callback) {
+        const index = this.ticker.indexOf(callback);
+        if (index >= 0) {
+            this.ticker.splice(index, 1);
+        }
+    }
+
     /**
      * @private
      */

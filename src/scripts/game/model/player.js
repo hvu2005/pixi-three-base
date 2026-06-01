@@ -4,6 +4,7 @@ import { SimpleSprite } from "../../../engine/extends/pixi/simple-sprite";
 import { Shooter } from "./shooters/shooter";
 import { Collider2d } from "../../../engine/extends/matter/collider-2d";
 import { createCollisionFilter } from "../config/collision-layer";
+import { ShooterLv1 } from "./shooters/shooter-lv1";
 
 
 
@@ -38,7 +39,7 @@ export class Player extends PixiObject {
         this.subSprite.position.set(0, -50);
         this.add(this.subSprite);
 
-        this.shooter = new Shooter(scene, {
+        this.shooter = new ShooterLv1(scene, {
             attackSpeed: 0.35,
         });
         this.add(this.shooter);

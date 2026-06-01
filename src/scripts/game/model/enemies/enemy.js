@@ -35,7 +35,7 @@ export class Enemy extends PixiObject {
     }
 
     oncollisionenter(other) {
-        console.log("Enemy collided with", other);
+        this.takeDamage();
     }
 
     update(dt) {

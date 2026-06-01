@@ -1,5 +1,6 @@
 import { PixiObject } from "../../../engine/core/pixi-object";
 import { Item } from "../model/item";
+import { ItemUpgrade } from "../model/items/item-upgrade";
 
 export class ItemController extends PixiObject {
     constructor(scene) {
@@ -8,9 +9,7 @@ export class ItemController extends PixiObject {
         this._nextId = 1;
         this.items = new Map();
         this.factories = {
-            item: (config) => new Item(this.scene, { ...config, type: "item" }),
-            upgrade: (config) => new Item(this.scene, { ...config, type: "upgrade" }),
-            heal: (config) => new Item(this.scene, { ...config, type: "heal" }),
+            upgrade: () => new ItemUpgrade(this.scene),
         };
     }
 
@@ -42,7 +41,7 @@ export class ItemController extends PixiObject {
 
         item.id = id;
         this.items.set(id, item);
-        this.scene.pixi.add(item);
+        this.pixi.add(item);
 
         return item;
     }
