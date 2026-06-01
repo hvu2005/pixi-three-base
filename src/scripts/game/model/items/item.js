@@ -22,12 +22,17 @@ export class Item extends PixiObject {
         this.add(this.sprite);
 
         this.collider = new Collider2d(this.scene, {
-            width: 24,
-            height: 24,
+            width: 1500,
+            height: 60,
             isSensor: true,
             collisionFilter: createCollisionFilter("ITEM"),
         });
         this.addComponent(this.collider);
+    }
+
+    update(dt) {
+        this.collider.syncToPhysics();
+        this.y += dt * 150;
     }
 
     /**

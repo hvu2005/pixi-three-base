@@ -18497,7 +18497,7 @@
       "format": "esm"
     },
     "src/engine/core/pixi-object.js": {
-      "bytes": 2243,
+      "bytes": 2311,
       "imports": [
         {
           "path": "node_modules/pixi.js/lib/index.mjs",
@@ -18550,7 +18550,7 @@
       "format": "esm"
     },
     "src/engine/core/scene.js": {
-      "bytes": 3188,
+      "bytes": 3362,
       "imports": [
         {
           "path": "node_modules/three/examples/jsm/libs/stats.module.js",
@@ -18597,7 +18597,7 @@
       "format": "esm"
     },
     "src/scripts/game/model/enemies/enemy.js": {
-      "bytes": 1974,
+      "bytes": 1950,
       "imports": [
         {
           "path": "src/engine/core/pixi-object.js",
@@ -18764,7 +18764,7 @@
       "format": "esm"
     },
     "src/engine/utils/object-pool.js": {
-      "bytes": 766,
+      "bytes": 828,
       "imports": [],
       "format": "esm"
     },
@@ -18780,7 +18780,7 @@
       "format": "esm"
     },
     "src/scripts/game/model/bullets/bullet.js": {
-      "bytes": 1166,
+      "bytes": 1336,
       "imports": [
         {
           "path": "node_modules/pixi.js/lib/index.mjs",
@@ -18816,7 +18816,7 @@
       "format": "esm"
     },
     "src/scripts/game/controller/pool-manager.js": {
-      "bytes": 1342,
+      "bytes": 1366,
       "imports": [
         {
           "path": "src/engine/core/pixi-object.js",
@@ -18837,7 +18837,7 @@
       "format": "esm"
     },
     "src/scripts/game/model/shooters/shooter.js": {
-      "bytes": 1250,
+      "bytes": 1684,
       "imports": [
         {
           "path": "node_modules/pixi.js/lib/index.mjs",
@@ -18858,12 +18858,33 @@
           "path": "src/scripts/game/model/bullets/bullet.js",
           "kind": "import-statement",
           "original": "../bullets/bullet"
+        },
+        {
+          "path": "src/scripts/game/controller/pool-manager.js",
+          "kind": "import-statement",
+          "original": "../../controller/pool-manager"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/scripts/game/model/shooters/shooter-lv1.js": {
+      "bytes": 303,
+      "imports": [
+        {
+          "path": "src/scripts/game/model/bullets/bullet.js",
+          "kind": "import-statement",
+          "original": "../bullets/bullet"
+        },
+        {
+          "path": "src/scripts/game/model/shooters/shooter.js",
+          "kind": "import-statement",
+          "original": "./shooter"
         }
       ],
       "format": "esm"
     },
     "src/scripts/game/model/player.js": {
-      "bytes": 2928,
+      "bytes": 2985,
       "imports": [
         {
           "path": "src/engine/core/pixi-object.js",
@@ -18894,6 +18915,11 @@
           "path": "src/scripts/game/config/collision-layer.js",
           "kind": "import-statement",
           "original": "../config/collision-layer"
+        },
+        {
+          "path": "src/scripts/game/model/shooters/shooter-lv1.js",
+          "kind": "import-statement",
+          "original": "./shooters/shooter-lv1"
         }
       ],
       "format": "esm"
@@ -19804,10 +19830,10 @@
           "bytesInOutput": 1747
         },
         "src/engine/core/pixi-object.js": {
-          "bytesInOutput": 718
+          "bytesInOutput": 729
         },
         "src/engine/core/scene.js": {
-          "bytesInOutput": 990
+          "bytesInOutput": 1065
         },
         "src/engine/extends/matter/collider-2d.js": {
           "bytesInOutput": 1579
@@ -19816,7 +19842,7 @@
           "bytesInOutput": 232
         },
         "src/scripts/game/model/enemies/enemy.js": {
-          "bytesInOutput": 755
+          "bytesInOutput": 736
         },
         "src/scripts/game/model/enemies/grunt-enemy.js": {
           "bytesInOutput": 448
@@ -19837,22 +19863,25 @@
           "bytesInOutput": 146
         },
         "src/engine/utils/object-pool.js": {
-          "bytesInOutput": 248
+          "bytesInOutput": 271
         },
         "src/scripts/game/model/bullets/bullet.js": {
-          "bytesInOutput": 379
+          "bytesInOutput": 419
         },
         "src/engine/extends/pixi/simple-sprite.js": {
           "bytesInOutput": 107
         },
         "src/scripts/game/controller/pool-manager.js": {
-          "bytesInOutput": 495
+          "bytesInOutput": 521
         },
         "src/scripts/game/model/player.js": {
           "bytesInOutput": 1581
         },
         "src/scripts/game/model/shooters/shooter.js": {
-          "bytesInOutput": 445
+          "bytesInOutput": 539
+        },
+        "src/scripts/game/model/shooters/shooter-lv1.js": {
+          "bytesInOutput": 121
         },
         "src/scripts/_scene/game-scene.js": {
           "bytesInOutput": 302
@@ -19861,7 +19890,7 @@
           "bytesInOutput": 29
         }
       },
-      "bytes": 453321
+      "bytes": 453692
     }
   }
 }
