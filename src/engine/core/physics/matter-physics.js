@@ -1,4 +1,4 @@
-import { Engine, Events, World, Render } from "matter-js";
+import { Engine, Events, World, Render, Composite } from "matter-js";
 
 export class MatterPhysics {
     constructor() {
@@ -121,6 +121,14 @@ export class MatterPhysics {
         render.bounds.min.y = 0;
         render.bounds.max.x = logicWidth;
         render.bounds.max.y = logicHeight;
+
+        Events.on(render, "beforeRender", () => {
+            const bodies = Composite.allBodies(this.world);
+
+            for (const body of bodies) {
+                body.render.visible = !body.isSleeping;
+            }
+        });
 
         Render.lookAt(render, {
             min: { x: 0, y: 0 },

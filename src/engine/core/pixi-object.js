@@ -62,6 +62,7 @@ export class PixiObject extends Container {
     addComponent(component) {
         this.components.push(component);
         component.gameObject = this;
+        component.enabled = this.visible;
 
         return component;
     }
@@ -81,6 +82,9 @@ export class PixiObject extends Container {
 
     destroy() {
         this.scene.removeUpdate(this._update);
+        for (const component of this.components) {
+            component.destroy();
+        }
         super.destroy();
     }
 
@@ -109,6 +113,9 @@ export class PixiObject extends Container {
             this.onInvisible();
         }
 
+        for (const component of this.components) {
+            component.enabled = value;
+        }
         // this.onVisibleChanged(value, oldValue);
     }
 

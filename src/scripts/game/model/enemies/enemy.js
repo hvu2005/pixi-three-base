@@ -1,7 +1,7 @@
 import { PixiObject } from "../../../../engine/core/pixi-object";
 import { Collider2d } from "../../../../engine/extends/matter/collider-2d";
 import { PoolManager } from "../../controller/pool-manager";
-import { Item } from "../items/item";
+import { ItemUpgrade } from "../items/item-upgrade";
 
 
 
@@ -69,7 +69,7 @@ export class Enemy extends PixiObject {
         this.isAlive = false;
         this.onDead?.(this);
         
-        const item = PoolManager.instance.get(Item.name);
+        const item = PoolManager.instance.get(ItemUpgrade.name);
         item.position.set(this.x, this.y);
         this.pixi.add(item);
 

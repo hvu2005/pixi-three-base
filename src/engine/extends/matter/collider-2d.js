@@ -59,15 +59,15 @@ export class Collider2d extends Component2D {
     }
 
     oncollisionenter(other) {
-        this.gameObject?.oncollisionenter?.(other);
+        this.gameObject?.oncollisionenter?.(other?.gameObject);
     }
 
     oncollisionexit(other) {
-        this.gameObject?.oncollisionexit?.(other);
+        this.gameObject?.oncollisionexit?.(other?.gameObject);
     }
 
     oncollisionstay(other) {
-        this.gameObject?.oncollisionstay?.(other);
+        this.gameObject?.oncollisionstay?.(other?.gameObject);
     }
 
     /**
@@ -79,6 +79,18 @@ export class Collider2d extends Component2D {
         if (this.gameObject) {
             this.gameObject.position.set(x, y);
         }
+    }
+
+    onDisable() {
+        Sleeping.set(this.body, true);
+    }
+
+    onEnable() {
+        Sleeping.set(this.body, false);
+    }
+
+    onDestroy() {
+        this.scene.matter.remove(this);
     }
 
     /**
@@ -172,4 +184,5 @@ export class Collider2d extends Component2D {
             
         }
     }
+
 }

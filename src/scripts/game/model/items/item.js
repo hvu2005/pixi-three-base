@@ -35,6 +35,10 @@ export class Item extends PixiObject {
         this.y += dt * 150;
     }
 
+    oncollisionenter(other) {
+        this.collect(other);
+    }
+
     /**
      * @param {any} payload
      */
@@ -45,15 +49,11 @@ export class Item extends PixiObject {
 
         this.isCollected = true;
         this.onCollect(this, payload);
-        this.destroySelf();
     }
 
     onCollect(item, payload) {
 
     }
 
-    destroySelf() {
-        this.parent?.removeChild(this);
-        this.destroy({ children: true });
-    }
+
 }

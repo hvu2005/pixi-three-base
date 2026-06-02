@@ -1,7 +1,7 @@
 import { PixiObject } from "../../../engine/core/pixi-object";
 import { ObjectPool } from "../../../engine/utils/object-pool";
 import { Bullet } from "../model/bullets/bullet";
-import { Item } from "../model/items/item";
+import { ItemUpgrade } from "../model/items/item-upgrade";
 
 
 
@@ -24,7 +24,7 @@ export class PoolManager extends PixiObject {
         }
 
         this.createPool(Bullet.name, () => new Bullet(this.scene), 10);
-        this.createPool(Item.name, () => new Item(this.scene), 2);
+        this.createPool(ItemUpgrade.name, () => new ItemUpgrade(this.scene), 2);
     }
 
     createPool(key, createFunc, size = 2) {

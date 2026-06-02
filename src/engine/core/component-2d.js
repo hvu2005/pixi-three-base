@@ -1,8 +1,13 @@
+import { Scene } from "./scene";
 
 
 
 
 export class Component2D {
+    /**
+     * 
+     * @param {Scene} scene 
+     */
     constructor(scene) {
         this.scene = scene;
 
@@ -25,6 +30,10 @@ export class Component2D {
         } else {
             this.onDisable();
         }
+    }
+
+    destroy() {
+        this.onDestroy();
     }
 
     onEnable() {

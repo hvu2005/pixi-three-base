@@ -18596,8 +18596,122 @@
       ],
       "format": "esm"
     },
+    "src/engine/utils/object-pool.js": {
+      "bytes": 828,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/engine/extends/pixi/simple-sprite.js": {
+      "bytes": 489,
+      "imports": [
+        {
+          "path": "node_modules/pixi.js/lib/index.mjs",
+          "kind": "import-statement",
+          "original": "pixi.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/scripts/game/config/collision-layer.js": {
+      "bytes": 753,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/scripts/game/model/bullets/bullet.js": {
+      "bytes": 1336,
+      "imports": [
+        {
+          "path": "node_modules/pixi.js/lib/index.mjs",
+          "kind": "import-statement",
+          "original": "pixi.js"
+        },
+        {
+          "path": "src/engine/core/pixi-object.js",
+          "kind": "import-statement",
+          "original": "../../../../engine/core/pixi-object"
+        },
+        {
+          "path": "src/engine/extends/matter/collider-2d.js",
+          "kind": "import-statement",
+          "original": "../../../../engine/extends/matter/collider-2d"
+        },
+        {
+          "path": "src/engine/extends/pixi/simple-sprite.js",
+          "kind": "import-statement",
+          "original": "../../../../engine/extends/pixi/simple-sprite"
+        },
+        {
+          "path": "src/scripts/game/config/collision-layer.js",
+          "kind": "import-statement",
+          "original": "../../config/collision-layer"
+        },
+        {
+          "path": "src/scripts/game/controller/pool-manager.js",
+          "kind": "import-statement",
+          "original": "../../controller/pool-manager"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/scripts/game/model/items/item.js": {
+      "bytes": 1495,
+      "imports": [
+        {
+          "path": "node_modules/pixi.js/lib/index.mjs",
+          "kind": "import-statement",
+          "original": "pixi.js"
+        },
+        {
+          "path": "src/engine/core/pixi-object.js",
+          "kind": "import-statement",
+          "original": "../../../../engine/core/pixi-object"
+        },
+        {
+          "path": "src/engine/extends/matter/collider-2d.js",
+          "kind": "import-statement",
+          "original": "../../../../engine/extends/matter/collider-2d"
+        },
+        {
+          "path": "src/engine/extends/pixi/simple-sprite.js",
+          "kind": "import-statement",
+          "original": "../../../../engine/extends/pixi/simple-sprite"
+        },
+        {
+          "path": "src/scripts/game/config/collision-layer.js",
+          "kind": "import-statement",
+          "original": "../../config/collision-layer"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/scripts/game/controller/pool-manager.js": {
+      "bytes": 1479,
+      "imports": [
+        {
+          "path": "src/engine/core/pixi-object.js",
+          "kind": "import-statement",
+          "original": "../../../engine/core/pixi-object"
+        },
+        {
+          "path": "src/engine/utils/object-pool.js",
+          "kind": "import-statement",
+          "original": "../../../engine/utils/object-pool"
+        },
+        {
+          "path": "src/scripts/game/model/bullets/bullet.js",
+          "kind": "import-statement",
+          "original": "../model/bullets/bullet"
+        },
+        {
+          "path": "src/scripts/game/model/items/item.js",
+          "kind": "import-statement",
+          "original": "../model/items/item"
+        }
+      ],
+      "format": "esm"
+    },
     "src/scripts/game/model/enemies/enemy.js": {
-      "bytes": 1950,
+      "bytes": 2194,
       "imports": [
         {
           "path": "src/engine/core/pixi-object.js",
@@ -18608,13 +18722,18 @@
           "path": "src/engine/extends/matter/collider-2d.js",
           "kind": "import-statement",
           "original": "../../../../engine/extends/matter/collider-2d"
+        },
+        {
+          "path": "src/scripts/game/controller/pool-manager.js",
+          "kind": "import-statement",
+          "original": "../../controller/pool-manager"
+        },
+        {
+          "path": "src/scripts/game/model/items/item.js",
+          "kind": "import-statement",
+          "original": "../items/item"
         }
       ],
-      "format": "esm"
-    },
-    "src/scripts/game/config/collision-layer.js": {
-      "bytes": 753,
-      "imports": [],
       "format": "esm"
     },
     "src/scripts/game/model/enemies/grunt-enemy.js": {
@@ -18759,79 +18878,6 @@
           "path": "src/scripts/game/model/enemies/index.js",
           "kind": "import-statement",
           "original": "../model/enemies"
-        }
-      ],
-      "format": "esm"
-    },
-    "src/engine/utils/object-pool.js": {
-      "bytes": 828,
-      "imports": [],
-      "format": "esm"
-    },
-    "src/engine/extends/pixi/simple-sprite.js": {
-      "bytes": 489,
-      "imports": [
-        {
-          "path": "node_modules/pixi.js/lib/index.mjs",
-          "kind": "import-statement",
-          "original": "pixi.js"
-        }
-      ],
-      "format": "esm"
-    },
-    "src/scripts/game/model/bullets/bullet.js": {
-      "bytes": 1336,
-      "imports": [
-        {
-          "path": "node_modules/pixi.js/lib/index.mjs",
-          "kind": "import-statement",
-          "original": "pixi.js"
-        },
-        {
-          "path": "src/engine/core/pixi-object.js",
-          "kind": "import-statement",
-          "original": "../../../../engine/core/pixi-object"
-        },
-        {
-          "path": "src/engine/extends/matter/collider-2d.js",
-          "kind": "import-statement",
-          "original": "../../../../engine/extends/matter/collider-2d"
-        },
-        {
-          "path": "src/engine/extends/pixi/simple-sprite.js",
-          "kind": "import-statement",
-          "original": "../../../../engine/extends/pixi/simple-sprite"
-        },
-        {
-          "path": "src/scripts/game/config/collision-layer.js",
-          "kind": "import-statement",
-          "original": "../../config/collision-layer"
-        },
-        {
-          "path": "src/scripts/game/controller/pool-manager.js",
-          "kind": "import-statement",
-          "original": "../../controller/pool-manager"
-        }
-      ],
-      "format": "esm"
-    },
-    "src/scripts/game/controller/pool-manager.js": {
-      "bytes": 1366,
-      "imports": [
-        {
-          "path": "src/engine/core/pixi-object.js",
-          "kind": "import-statement",
-          "original": "../../../engine/core/pixi-object"
-        },
-        {
-          "path": "src/engine/utils/object-pool.js",
-          "kind": "import-statement",
-          "original": "../../../engine/utils/object-pool"
-        },
-        {
-          "path": "src/scripts/game/model/bullets/bullet.js",
-          "kind": "import-statement",
-          "original": "../model/bullets/bullet"
         }
       ],
       "format": "esm"
@@ -19841,14 +19887,29 @@
         "src/engine/core/component-2d.js": {
           "bytesInOutput": 232
         },
-        "src/scripts/game/model/enemies/enemy.js": {
-          "bytesInOutput": 736
+        "src/engine/utils/object-pool.js": {
+          "bytesInOutput": 271
         },
-        "src/scripts/game/model/enemies/grunt-enemy.js": {
-          "bytesInOutput": 448
+        "src/scripts/game/model/bullets/bullet.js": {
+          "bytesInOutput": 419
+        },
+        "src/engine/extends/pixi/simple-sprite.js": {
+          "bytesInOutput": 107
         },
         "src/scripts/game/config/collision-layer.js": {
           "bytesInOutput": 324
+        },
+        "src/scripts/game/model/items/item.js": {
+          "bytesInOutput": 523
+        },
+        "src/scripts/game/controller/pool-manager.js": {
+          "bytesInOutput": 571
+        },
+        "src/scripts/game/model/enemies/enemy.js": {
+          "bytesInOutput": 814
+        },
+        "src/scripts/game/model/enemies/grunt-enemy.js": {
+          "bytesInOutput": 448
         },
         "src/scripts/game/model/enemies/tank-enemy.js": {
           "bytesInOutput": 5
@@ -19861,18 +19922,6 @@
         },
         "src/scripts/game/controller/enemy-controller.js": {
           "bytesInOutput": 146
-        },
-        "src/engine/utils/object-pool.js": {
-          "bytesInOutput": 271
-        },
-        "src/scripts/game/model/bullets/bullet.js": {
-          "bytesInOutput": 419
-        },
-        "src/engine/extends/pixi/simple-sprite.js": {
-          "bytesInOutput": 107
-        },
-        "src/scripts/game/controller/pool-manager.js": {
-          "bytesInOutput": 521
         },
         "src/scripts/game/model/player.js": {
           "bytesInOutput": 1581
@@ -19890,7 +19939,7 @@
           "bytesInOutput": 29
         }
       },
-      "bytes": 453692
+      "bytes": 454343
     }
   }
 }
